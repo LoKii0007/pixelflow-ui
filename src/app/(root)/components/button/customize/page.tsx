@@ -9,13 +9,13 @@ import { useSelector } from "react-redux";
 import Custom from "@/components/Custom";
 import { CopyBtn } from "@/components/CopyBtn";
 
-export const activeTabTypes = {
-  preview: "preview",
-  code: "code",
-  settings: "settings",
-};
-
 const ButtonPage = () => {
+  const activeTabTypes: Record<string, string> = {
+    preview: "preview",
+    code: "code",
+    settings: "settings",
+  };
+
   const [animationEase, setAnimationEase] = useState(EaseTypes.default);
   const theme = useSelector((state: any) => state.theme.theme);
   const [activeTab, setActiveTab] = useState(activeTabTypes.preview);
@@ -79,7 +79,7 @@ const ButtonPage = () => {
                   ) : (
                     <div className="relative">
                       <pre className="bg-muted p-4 rounded-md overflow-x-auto">
-                        'code'
+                        &#39;code&#39;
                       </pre>
                     </div>
                   )}

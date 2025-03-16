@@ -10,7 +10,7 @@ import { CopyBtn } from "@/components/CopyBtn";
 import { Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export const activeTabTypes = {
+const activeTabTypes = {
   preview: "preview",
   code: "code",
   settings: "settings",
