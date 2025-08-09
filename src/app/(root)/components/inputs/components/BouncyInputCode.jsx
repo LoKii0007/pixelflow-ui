@@ -24,6 +24,7 @@ const BouncyInput = () => {
         className="h-full w-full flex items-center justify-center text-black overflow-hidden border-[0.6px] box-border border-gray-300 rounded-md px-3 py-2 absolute bg-transparent z-10"
       ></motion.div>
       <input
+        placeholder="Type something..."
         type="text"
         className="w-full text-white focus:outline-none px-3 py-2 z-20 relative"
         value={value}

@@ -58,6 +58,7 @@ const BouncyInput = () => {
                     ></m.div>
                     <input
                       type="text"
+                      placeholder="Type something..."
                       className="w-full text-white focus:outline-none px-3 py-2 z-20 relative"
                       value={value}
                       onChange={(e) => setValue(e.target.value)}

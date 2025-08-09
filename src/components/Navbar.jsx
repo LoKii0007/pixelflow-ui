@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import SearchDialog from "./SearchDialog";
 import Image from "next/image";
-import { MenuIcon, Moon, Sun } from "lucide-react";
+import { Globe, MenuIcon, Moon, Sun } from "lucide-react";
 import { useThemeStore } from "@/stores/themeStore";
 import { Theme } from "@/lib/constants";
 import Link from "next/link";
@@ -44,6 +44,20 @@ const Navbar = () => {
           </div>
 
           <div className="nav-right flex items-center gap-4">
+            <Link
+              target="_blank"
+              href={`https://portfolio-five-rho.vercel.app`}
+              className="nav-link cursor-pointer"
+            >
+              <Globe className="h-5 w-5" />
+            </Link>
+            <Link
+              target="_blank"
+              href={`https://github.com/LoKii0007`}
+              className="nav-link cursor-pointer"
+            >
+              <img src="/images/github.svg" alt="github" className="h-5 w-5" />
+            </Link>
             <SearchDialog theme={theme} />
             {/* <Button
               onClick={() => toggleTheme()}
