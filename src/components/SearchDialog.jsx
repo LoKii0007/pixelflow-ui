@@ -12,15 +12,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, X, ExternalLink } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux";
-import { Theme } from "@/types/types";
+import { useComponentsStore } from "@/stores/componentsStore";
+import { Theme } from "@/lib/constants";
+import { useRouter } from "next/navigation";
 
-const SearchDialog = ({theme}) => {
-  const allComponents = useSelector((state) => state.components);
+const SearchDialog = ({ theme }) => {
+  const { components: allComponents } = useComponentsStore();
+  const router = useRouter();
   const [filteredComponents, setfilteredComponents] = useState(
     allComponents || []
   );
   const [searchQuery, setsearchQuery] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleSearchChange = (e) => {
     setsearchQuery(e.target.value);
@@ -36,25 +39,52 @@ const SearchDialog = ({theme}) => {
     setfilteredComponents(allComponents);
   };
 
+  const handleLinkClick = (componentPath) => {
+    setOpen(false);
+    router.push(componentPath);
+    setsearchQuery("");
+    setfilteredComponents(allComponents);
+  };
+
   return (
     <>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <div className={`flex items-center border rounded-md px-3 py-1 cursor-pointer ${theme === Theme.dark ? "bg-zinc-900 hover:bg-zinc-800 text-gray-50" : "bg-gray-50 hover:bg-gray-100 text-zinc-950"}`}>
+          <div
+            className={`flex items-center border rounded-md px-3 py-1 cursor-pointer ${
+              theme === Theme.dark
+                ? "bg-zinc-900 hover:bg-zinc-800 text-gray-50"
+                : "bg-gray-50 hover:bg-gray-100 text-zinc-950"
+            }`}
+          >
             <Search className="h-4 w-4 mr-2 " />
             <span className="text-sm ">Search components...</span>
           </div>
         </DialogTrigger>
-        <DialogContent className={`sm:max-w-md ${theme === Theme.dark ? "bg-zinc-950" : "bg-gray-50"}`}>
+        <DialogContent
+          className={`sm:max-w-md ${
+            theme === Theme.dark ? "bg-zinc-950" : "bg-gray-50"
+          }`}
+        >
           <DialogHeader>
-            <DialogTitle className={`${theme === Theme.dark ? "text-gray-50" : "text-zinc-950"}`}>Search Components</DialogTitle>
+            <DialogTitle
+              className={`${
+                theme === Theme.dark ? "text-gray-50" : "text-zinc-950"
+              }`}
+            >
+              Search Components
+            </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col gap-4 py-4">
             <div className="relative">
               <Input
                 type="text"
                 placeholder="Search for components..."
-                className={`w-full pr-8 ${theme === Theme.dark ? "bg-zinc-900 text-gray-50" : "bg-gray-50 text-zinc-950"}`}
+                className={`w-full pr-8 ${
+                  theme === Theme.dark
+                    ? "bg-zinc-900 text-gray-50"
+                    : "bg-gray-50 text-zinc-950"
+                }`}
                 value={searchQuery}
                 onChange={handleSearchChange}
                 autoFocus
@@ -76,14 +106,18 @@ const SearchDialog = ({theme}) => {
               <div className="space-y-3">
                 {filteredComponents?.map((component) => (
                   <div
+                    onClick={() => {
+                      handleLinkClick(component.path);
+                    }}
                     key={component.id}
-                    className={`p-3 rounded-md hover:bg-zinc-800 cursor-pointer ${theme === Theme.dark ? "hover:bg-zinc-800 text-gray-50" : "hover:bg-gray-100 text-zinc-950"}`}
+                    className={`p-3 rounded-md hover:bg-zinc-800 cursor-pointer ${
+                      theme === Theme.dark
+                        ? "hover:bg-zinc-800 text-gray-50"
+                        : "hover:bg-gray-100 text-zinc-950"
+                    }`}
                   >
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium">{component.name}</h3>
-                      </div>
-                      
+                      <h3 className="font-medium">{component.name}</h3>
                     </div>
                   </div>
                 ))}

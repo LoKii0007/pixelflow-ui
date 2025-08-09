@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export default function middleware(req) {
   const { pathname } = req.nextUrl;
 
-  if (pathname === "/components") {
-    return NextResponse.redirect(new URL("/components/button", req.url));
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL("/components/navbars", req.url));
   }
 }
 
 export const config = {
-  matcher: "/components/:path*",
+  matcher: "/:path*",
 };

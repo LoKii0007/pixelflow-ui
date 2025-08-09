@@ -1,23 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface Point {
-  x: number;
-  y: number;
-}
 
-interface CustomProps {
-  onChange?: (points: Point[]) => void;
-}
 
-const Custom: React.FC<CustomProps> = ({ onChange }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [points, setPoints] = useState<Point[]>([
+const Custom = ({ onChange }) => {
+  const canvasRef = useRef(null);
+  const [points, setPoints] = useState([
     { x: 0.25, y: 0.75 },  // First control point
     { x: 0.75, y: 0.25 },  // Second control point
   ]);
-  const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
+  const [draggingIndex, setDraggingIndex] = useState(null);
 
-  const drawCurve = (ctx: CanvasRenderingContext2D) => {
+  const drawCurve = (ctx) => {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
 
@@ -93,7 +86,7 @@ const Custom: React.FC<CustomProps> = ({ onChange }) => {
     drawCurve(ctx);
   }, [points]);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseDown = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -112,7 +105,7 @@ const Custom: React.FC<CustomProps> = ({ onChange }) => {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseMove = (e) => {
     if (draggingIndex === null) return;
 
     const canvas = canvasRef.current;
@@ -137,7 +130,7 @@ const Custom: React.FC<CustomProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative p-8">
       <canvas
         ref={canvasRef}
         className="border border-gray-300 rounded-lg cursor-pointer"

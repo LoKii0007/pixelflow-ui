@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button";
 import SearchDialog from "./SearchDialog";
 import Image from "next/image";
 import { Moon, Sun } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleTheme } from "@/redux/slices/themeSlice";
-import { Theme } from "@/types/types";
+import { useThemeStore } from "@/stores/themeStore";
+import { Theme } from "@/lib/constants";
 import Link from "next/link";
 
 const Navbar = () => {
-  const theme = useSelector((state) => state.theme.theme);
-  const dispatch = useDispatch();
+  const { theme, toggleTheme } = useThemeStore();
 
   return (
     <>
@@ -35,15 +33,18 @@ const Navbar = () => {
             {/* <Link href={`/documentation`} className="nav-link cursor-pointer">
               Documentation
             </Link> */}
-            <Link href={`/components`} className="nav-link cursor-pointer">
+            <Link href={`/components/navbars`} className="nav-link cursor-pointer">
               Components
+            </Link>
+            <Link href={`/playground`} className="nav-link cursor-pointer">
+              Playground
             </Link>
           </div>
 
           <div className="nav-right flex items-center gap-4">
             <SearchDialog theme={theme} />
-            <Button
-              onClick={() => dispatch(toggleTheme())}
+            {/* <Button
+              onClick={() => toggleTheme()}
               variant="ghost"
               size="icon"
               className="hover:bg-zinc-800 hover:text-white cursor-pointer"
@@ -53,7 +54,7 @@ const Navbar = () => {
               ) : (
                 <Moon className="h-4 w-4" />
               )}
-            </Button>
+            </Button> */}
           </div>
         </div>
       </nav>

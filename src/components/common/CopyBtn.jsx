@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { ClipboardIcon, CheckIcon } from "lucide-react";
+import { CheckIcon, CopyIcon } from "lucide-react";
 
-export const CopyBtn = ({ code }: { code: string }) => {
-  const [activeTab, setActiveTab] = useState("preview");
+const CopyBtn = ({ code }) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -16,15 +15,17 @@ export const CopyBtn = ({ code }: { code: string }) => {
     <>
       <button
         onClick={copyToClipboard}
-        className="absolute top-2 right-2 p-2 rounded-md bg-transparent hover:bg-muted-foreground/10"
+        className="p-1 m-1 rounded-sm bg-transparent hover:bg-gray-300 transition-all duration-300 text-white hover:text-black"
         aria-label="Copy code"
       >
         {copied ? (
-          <CheckIcon className="h-4 w-4 text-green-500" />
+          <CheckIcon width={16} height={16} />
         ) : (
-          <ClipboardIcon className="h-4 w-4" />
+          <CopyIcon width={16} height={16} />
         )}
       </button>
     </>
   );
 };
+
+export default CopyBtn;

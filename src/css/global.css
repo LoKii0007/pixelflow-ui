@@ -1,30 +1,30 @@
 .default-trans::before, .default-trans::after, .default-trans{
-    transition: all 0.3s cubic-bezier(0.35,0.1,0.25,1);
+    transition: all cubic-bezier(0.35,0.1,0.25,1);
 }
 
 .ease-in-trans::before, .ease-in-trans::after, .ease-in-trans{
-    transition: all 0.3s ease-in;
+    transition: all ease-in;
 }
 
 
 .ease-out-trans::before, .ease-out-trans::after, .ease-out-trans{
-    transition: all 0.3s ease-out;
+    transition: all ease-out;
 }
 
 .ease-in-out-trans::before, .ease-in-out-trans::after, .ease-in-out-trans{
-    transition: all 0.3s ease-in-out;
+    transition: all ease-in-out;
 }
 
 .power-in-trans::before, .power-in-trans::after, .power-in-trans{
-    transition: all 0.3s cubic-bezier(0.25,1,0.5,1);
+    transition: all cubic-bezier(0.25,1,0.5,1);
 }
 
 .power-out-trans::before, .power-out-trans::after, .power-out-trans{
-    transition: all 0.3s cubic-bezier(0.25,0.1,0.25,1);
+    transition: all cubic-bezier(0.25,0.1,0.25,1);
 }
 
 .power-in-out-trans::before, .power-in-out-trans::after, .power-in-out-trans{
-    transition: all 0.3s cubic-bezier(0.25,0.1,0.25,1);
+    transition: all cubic-bezier(0.25,0.1,0.25,1);
 }
 
 .effect-blur {
@@ -34,9 +34,21 @@
 
 .ease-btn{
     box-shadow: 0px 0px 0px 0px rgb(123, 182, 240);
-    transition: all 0.3s ease-in-out;
+    transition: all ease-in-out;
 }
 
 .active-ease-btn{
     box-shadow: 0px 0px 20px 0px rgb(123, 182, 240);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+    background: transparent;
 }
