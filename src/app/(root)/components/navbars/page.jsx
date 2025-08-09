@@ -1,19 +1,20 @@
 "use client";
 
 import React from "react";
-
 import Navbar1 from "./components/Navbar1";
 import Navbar2 from "./components/Navbar2";
+import ComponentPageLayout from "@/layouts/ComponentPageLayout";
+import ComponentHeading from "@/components/common/ComponentHeading";
 
 const Page = () => {
   return (
     <div className="container ">
-      <h1 className="text-3xl font-bold mb-6">Navbars</h1>
+      <ComponentHeading label="Navbars" description="Navbars" />
 
-      <div className="all-components w-full grid grid-cols-2 gap-12">
+      <ComponentPageLayout>
         <Navbar1 />
         <Navbar2 />
-      </div>
+      </ComponentPageLayout>
     </div>
   );
 };

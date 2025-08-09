@@ -4,24 +4,26 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import SearchDialog from "./SearchDialog";
 import Image from "next/image";
-import { Moon, Sun } from "lucide-react";
+import { MenuIcon, Moon, Sun } from "lucide-react";
 import { useThemeStore } from "@/stores/themeStore";
 import { Theme } from "@/lib/constants";
 import Link from "next/link";
+import MobileSidebar from "./MobileSidebar";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useThemeStore();
 
   return (
     <>
+      {/* //?mobile Navbar */}
       <nav
-        className={` w-full sticky top-0 z-50 border-b border-gray-600 ${
+        className={` w-full sticky hidden md:block top-0 z-50 border-b border-gray-600 ${
           theme === Theme.dark
             ? "bg-zinc-950 text-gray-50"
             : "bg-gray-50 text-zinc-950"
         } `}
       >
-        <div className="navbar effect-blur max-w-[1400px] mx-auto flex justify-between items-center py-4">
+        <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center py-4 px-8 2xl:px-0">
           <div className="nav-left flex items-center gap-6">
             <Link
               href={`/`}
@@ -30,10 +32,10 @@ const Navbar = () => {
               <Image src="/images/logo.png" alt="logo" width={50} height={50} />
               <h1 className="text-2xl font-bold">Pixelflow UI</h1>
             </Link>
-            {/* <Link href={`/documentation`} className="nav-link cursor-pointer">
-              Documentation
-            </Link> */}
-            <Link href={`/components/navbars`} className="nav-link cursor-pointer">
+            <Link
+              href={`/components/navbars`}
+              className="nav-link cursor-pointer"
+            >
               Components
             </Link>
             <Link href={`/playground`} className="nav-link cursor-pointer">
@@ -56,6 +58,28 @@ const Navbar = () => {
               )}
             </Button> */}
           </div>
+        </div>
+      </nav>
+
+      {/* //? desktop Navbar */}
+      <nav
+        className={` w-full sticky block md:hidden top-0 z-50 border-b border-gray-600 ${
+          theme === Theme.dark
+            ? "bg-zinc-950 text-gray-50"
+            : "bg-gray-50 text-zinc-950"
+        } `}
+      >
+        <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center p-5 overflow-x-hidden">
+          <div className="nav-left flex items-center gap-6">
+            <Link
+              href={`/`}
+              className="nav-link cursor-pointer flex items-center gap-1"
+            >
+              <Image src="/images/logo.png" alt="logo" width={30} height={30} />
+              <h1 className="text-xl font-bold">Pixelflow UI</h1>
+            </Link>
+          </div>
+          <MobileSidebar />
         </div>
       </nav>
     </>

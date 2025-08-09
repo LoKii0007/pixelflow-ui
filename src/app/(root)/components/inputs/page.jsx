@@ -2,15 +2,17 @@
 
 import React from "react";
 import BouncyInput from "./components/BouncyInput";
+import ComponentPageLayout from "@/layouts/ComponentPageLayout";
+import ComponentHeading from "@/components/common/ComponentHeading";
 
 const Page = () => {
   return (
     <div className="container">
-      <h1 className="text-3xl font-bold mb-6">Inputs</h1>
+      <ComponentHeading label="Inputs" description="Inputs" />
 
-      <div className="all-components w-full grid grid-cols-2 gap-12">
-        <BouncyInput/>
-      </div>
+      <ComponentPageLayout>
+        <BouncyInput />
+      </ComponentPageLayout>
     </div>
   );
 };

@@ -11,18 +11,15 @@ export default function RootLayout({ children }) {
 
   return (
     <div
-      className={`w-full flex justify-center h-[calc(100vh-81px)] ${
+      className={`w-full flex justify-center overflow-x-hidden h-[calc(100vh-81px)] ${
         theme === Theme.dark
           ? "bg-zinc-950 text-gray-50"
           : "bg-white text-gray-950"
       }`}
     >
-      <div className="max-w-[1400px] w-full grid grid-cols-12 mx-auto gap-2">
-        <div className="sidebar-container z-40 overflow-y-auto col-span-2 py-8">
-          <Sidebar />
-        </div>
-
-        <div className="w-full border-l border-gray-600 p-8 overflow-y-auto scrollbar-hide col-span-10">
+      <div className="max-w-[1400px] w-full grid grid-cols-1 mx-auto gap-2 md:grid-cols-12 overflow-x-hidden">
+        <Sidebar />
+        <div className="w-full border-gray-600 p-5 overflow-y-auto scrollbar-hide col-span-10 md:p-8 md:border-l">
           {children}
         </div>
       </div>

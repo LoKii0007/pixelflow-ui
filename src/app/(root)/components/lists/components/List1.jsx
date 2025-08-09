@@ -78,14 +78,11 @@ const List1 = () => {
           </div>
 
           <div className="relative">
-            <CardLayout
-              style={{
-                minHeight: `${(height + GAP) * filteredDemo.length + 1}px`,
-              }}
+            <CardLayout className={'min-h-[400px] md:min-h-[250px]'}
             >
               {activeTab === SELECTION_TYPES?.preview ? (
                 <>
-                  <div className="w-full h-full p-4 flex justify-center items-center overflow-x-hidden">
+                  <div className="w-full h-full md:p-4 flex justify-center items-center overflow-x-hidden">
                     <div className={`w-full h-full flex flex-col relative`}>
                       <LazyMotion features={domAnimation} strict>
                         {filteredDemo.map((item, index) => {
@@ -114,16 +111,22 @@ const List1 = () => {
                             >
                               <div
                                 style={{ height: `${height}px` }}
-                                className={`w-full items-center grid grid-cols-4 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 transition-all duration-500`}
+                                className={`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 transition-all duration-500 md:grid-cols-4`}
                               >
-                                <h1>{item.name}</h1>
-                                <p>{item.age}</p>
-                                <button
-                                  onClick={() => handleDelete(item.id)}
-                                  className="col-start-5 hover:bg-gray-100 transition-all duration-300 text-white hover:text-black p-1 rounded-md"
-                                >
-                                  <Trash width={16} height={16} />
-                                </button>
+                                <h1 className="truncate text-sm md:text-base">
+                                  {item.name}
+                                </h1>
+                                <p className="truncate text-sm md:text-base">
+                                  {item.age}
+                                </p>
+                                <div className="flex justify-end items-center w-full md:col-start-4">
+                                  <button
+                                    onClick={() => handleDelete(item.id)}
+                                    className=" hover:bg-gray-100 transition-all duration-300 text-white hover:text-black p-1 rounded-md w-fit"
+                                  >
+                                    <Trash width={16} height={16} />
+                                  </button>
+                                </div>
                               </div>
                             </m.div>
                           );

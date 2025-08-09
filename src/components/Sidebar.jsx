@@ -14,23 +14,25 @@ const Sidebar = () => {
   }, [allComponents, pathname]);
 
   return (
-    <div className="sidebar flex flex-col gap-1 ps-1">
-      {allComponents.map((component) => (
-        <div
-          onClick={() => {
-            router.push(`/components/${component.id}`);
-          }}
-          key={component.id}
-          className={`sidebar-item w-full py-2 px-4 hover:bg-zinc-800 rounded-md cursor-pointer ${
-            activeComp?.id === component.id
-              ? "bg-zinc-800"
-              : ""
-          }`}
-        >
-          {component.name}
+    <>
+      <div className="sidebar-container z-40 overflow-y-auto hidden md:grid col-span-2 py-8">
+        <div className="sidebar flex-col gap-1 ps-1 flex">
+          {allComponents.map((component) => (
+            <div
+              onClick={() => {
+                router.push(`/components/${component.id}`);
+              }}
+              key={component.id}
+              className={`sidebar-item w-full py-2 px-4 hover:bg-zinc-800 rounded-md cursor-pointer ${
+                activeComp?.id === component.id ? "bg-zinc-800" : ""
+              }`}
+            >
+              {component.name}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 };
 
