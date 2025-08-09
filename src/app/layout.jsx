@@ -25,6 +25,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://silentpulse.vercel.app/script.js"
+          data-website-id="f52fe790-74fa-47fe-a858-aa6f384ac197"
+        ></script>
+      </head>
       <body
         className={` ${geistSans.variable} ${geistMono.variable} antialiased w-full bg-zinc-950`}
       >
