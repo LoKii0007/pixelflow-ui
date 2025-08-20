@@ -43,7 +43,14 @@ const initialComponents = [
     description: 'A input component for site-wide navigation.',
     category: 'layout',
     path: '/components/inputs',
-  }
+  },
+  {
+    id: 'loaders',
+    name: 'Loaders',
+    description: 'A loader component for site-wide navigation.',
+    category: 'layout',
+    path: '/components/loaders',
+  },
 ];
 
 export const useComponentsStore = create((set) => ({

@@ -6,7 +6,7 @@ const ReplayBtn = ({ resetAnimation }) => {
   return (
     <Button
       onClick={resetAnimation}
-      className="absolute bottom-3 right-3 cursor-pointer replay-btn group hover:bg-gray-300 transition-all duration-300 text-white hover:text-black p-1 rounded-md"
+      className="absolute bottom-3 right-3 cursor-pointer replay-btn group hover:bg-gray-300 transition-all duration-300 text-white hover:text-black p-1 rounded-md z-50"
     >
       <RotateCw
         className="group-hover:rotate-360 transition-all ease-in-out duration-500"
