@@ -43,7 +43,7 @@ const Navbar1 = () => {
         return prev + 1;
       });
       i++;
-    }, 200);
+    }, 50);
 
     return () => clearInterval(interval);
   }, []);

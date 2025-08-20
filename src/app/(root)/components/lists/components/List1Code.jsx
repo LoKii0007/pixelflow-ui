@@ -59,7 +59,7 @@ const List1CodeComponent = () => {
             >
               <div
                 style={{ height: \`\${height}px\` }}
-                className={\`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 transition-all duration-500 md:grid-cols-4\`\}
+                className={\`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 transition-all duration-500 md:grid-cols-4\`}
                 >
                   <h1 className="truncate text-sm md:text-base">
                     {item.name}
