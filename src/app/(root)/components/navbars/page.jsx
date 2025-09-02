@@ -6,6 +6,7 @@ import Navbar2 from "./components/Navbar2";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentHeading from "@/components/common/ComponentHeading";
 import Navbar3 from "./components/Navbar3";
+import Navbar4 from "./components/Navbar4";
 
 const Page = () => {
   return (
@@ -14,6 +15,7 @@ const Page = () => {
 
       <ComponentPageLayout>
         <Navbar3 className="col-span-2" />
+        {/* <Navbar4 className="col-span-2" /> */}
         <Navbar1 />
         <Navbar2 />
       </ComponentPageLayout>

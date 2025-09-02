@@ -1,0 +1,23 @@
+.pill-bg{
+    box-shadow: rgba(161,196,253, 1) 0px -32px 32px 0px inset, rgb(255, 255, 255) 0px 0px 0px 2px inset, rgba(0, 0, 0, 0.06) 0px 4px 2px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 24px 4px inset, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    z-index: -1;
+    transition: .7s ease;
+}
+.pill-bg::before{
+    opacity: 0;
+}
+.nav-item:nth-child(3):hover ~ .pill-bg{
+    right: 99.94px;
+    width: 107.24px;
+    transition: .7s ease;
+}
+.nav-item:nth-child(2):hover ~ .pill-bg{
+    right: 207.18px;
+    width: 77.74px;
+    transition: .7s ease;
+}
+.nav-item:nth-child(1):hover ~ .pill-bg{
+    right: 284.92px;
+    width: 103.64px;
+    transition: .7s ease;
+}

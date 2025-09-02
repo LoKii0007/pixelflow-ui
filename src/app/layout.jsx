@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { ZustandProvider } from "@/stores/provider";
 import "./global.css";
+import "./app.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
