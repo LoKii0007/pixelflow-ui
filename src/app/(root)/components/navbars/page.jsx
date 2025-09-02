@@ -15,7 +15,7 @@ const Page = () => {
 
       <ComponentPageLayout>
         <Navbar3 className="col-span-2" />
-        {/* <Navbar4 className="col-span-2" /> */}
+        <Navbar4 className="col-span-2" />
         <Navbar1 />
         <Navbar2 />
       </ComponentPageLayout>
