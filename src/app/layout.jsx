@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <script
           defer
           src="https://silentpulse.vercel.app/script.js"
-          data-website-id="f52fe790-74fa-47fe-a858-aa6f384ac197"
+          data-website-id={process.env.UMAMI_TRACKING_ID}
         ></script>
       </head>
       <body
