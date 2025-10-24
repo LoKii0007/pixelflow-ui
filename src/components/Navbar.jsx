@@ -11,7 +11,7 @@ import Link from "next/link";
 import MobileSidebar from "./MobileSidebar";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useThemeStore();
+  const { theme } = useThemeStore();
 
   return (
     <>
@@ -38,9 +38,9 @@ const Navbar = () => {
             >
               Components
             </Link>
-            <Link href={`/playground`} className="nav-link cursor-pointer">
+            {/* <Link href={`/playground`} className="nav-link cursor-pointer">
               Playground
-            </Link>
+            </Link> */}
           </div>
 
           <div className="nav-right flex items-center gap-4">

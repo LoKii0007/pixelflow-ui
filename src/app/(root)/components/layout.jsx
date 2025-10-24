@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
 
   return (
     <div
-      className={`w-full flex justify-center overflow-x-hidden h-[calc(100vh-81px)] ${
+      className={`w-full flex justify-center overflow-x-hidden h-[calc(100vh-82px)] ${
         theme === Theme.dark
           ? "bg-zinc-950 text-gray-50"
           : "bg-white text-gray-950"
