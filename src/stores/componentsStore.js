@@ -30,6 +30,13 @@ const initialComponents = [
     category: 'layout',
     path: '/components/backgrounds',
   },
+  {
+    id: 'multi-select',
+    name: 'Multi Select',
+    description: 'A background component for site-wide navigation.',
+    category: 'layout',
+    path: '/components/multi-select',
+  },
   // {
   //   id: 'footer',
   //   name: 'Footer',

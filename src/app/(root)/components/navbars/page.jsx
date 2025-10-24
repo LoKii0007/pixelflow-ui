@@ -10,14 +10,14 @@ import Navbar4 from "./components/Navbar4";
 
 const Page = () => {
   return (
-    <div className="container ">
+    <div className="container">
       <ComponentHeading label="Navbars" description="Navbars" />
 
       <ComponentPageLayout>
         <Navbar3 className="col-span-2" />
         <Navbar4 className="col-span-2" />
-        <Navbar1 />
-        <Navbar2 />
+        <Navbar1 className="col-span-2" />
+        <Navbar2 className="col-span-2" />
       </ComponentPageLayout>
     </div>
   );

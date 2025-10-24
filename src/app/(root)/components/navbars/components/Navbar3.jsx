@@ -7,7 +7,7 @@ import CopyBtn from "@/components/common/CopyBtn";
 import { useState } from "react";
 import { Navbar3Code } from "./Navbar3Code";
 import CardLayout from "@/layouts/CardLayout";
-import ReplayBtn from "@/components/common/ReplayBtn";
+// import ReplayBtn from "@/components/common/ReplayBtn";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -139,7 +139,7 @@ const Navbar3 = ({ className }) => {
 									</div>
 
 									{/* //?replay button  */}
-									<ReplayBtn resetAnimation={resetAnimation} />
+									{/* <ReplayBtn resetAnimation={resetAnimation} /> */}
 								</>
 							) : (
 								<CodeSnippetLayout code={Navbar3Code} />

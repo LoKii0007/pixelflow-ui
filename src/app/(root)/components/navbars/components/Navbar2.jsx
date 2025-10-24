@@ -12,7 +12,7 @@ import CardLayout from "@/layouts/CardLayout";
 import ReplayBtn from "@/components/common/ReplayBtn";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
 
-const Navbar2 = () => {
+const Navbar2 = ({className}) => {
   const [activeTab, setActiveTab] = useState(SELECTION_TYPES.preview);
   const [animationKey, setAnimationKey] = useState(0);
 
@@ -21,7 +21,7 @@ const Navbar2 = () => {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className={`space-y-8 ${className}`}>
       <section>
         <div className=" overflow-hidden">
           <div className="flex justify-between items-center w-full">
