@@ -155,11 +155,11 @@ const Navbar4 = ({ className }) => {
                       onWheel={handleScroll}
                       onTouchMove={handleScroll}
                       onScroll={handleScroll}
-                      style={{ height: `${isNav ? "40vh" : "0%"}` }}
+                      style={{ height: `${isNav ? "70vh" : "0%"}` }}
                       className=" bg-white w-full ease-in absolute top-0 left-0 nav-bg z-30 overflow-hidden transition-all duration-1000 flex flex-col "
                     >
                       <div
-                        className=" w-full h-[40vh] flex flex-col bg-white"
+                        className=" w-full h-[70vh] flex flex-col bg-white"
                       >
                         <div className="w-full items-center justify-between px-12 py-5">
                           <div className="nav-left text-white bg-black rounded-full px-4 py-2 absolute top-8 left-12 font-bold text-xl">

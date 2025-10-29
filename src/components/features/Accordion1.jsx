@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Accordion,
@@ -9,30 +9,30 @@ import {
 import React from "react";
 import { cn } from "@/lib/utils";
 
-const itmes = [
+const demoOptions = [
   {
-    title: "Product Information",
+    title: "Product Overview",
     description:
-      "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
+      "Discover our latest innovation designed for efficiency and comfort. Engineered with precision to deliver top-tier performance in any environment.",
   },
   {
-    title: "Product Information",
+    title: "Specifications",
     description:
-      "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
+      "Crafted with aerospace-grade aluminum, powered by a next-gen processor, and equipped with a long-lasting lithium battery for uninterrupted use.",
   },
   {
-    title: "Product Information",
+    title: "Warranty & Support",
     description:
-      "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
+      "All purchases include a 2-year limited warranty and lifetime technical support. Extended protection plans are also available.",
   },
   {
-    title: "Product Information",
+    title: "Shipping & Returns",
     description:
-      "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
+      "We offer free worldwide shipping and a 30-day return policy. Orders are processed within 24 hours and shipped with real-time tracking.",
   },
 ];
 
-export function AccordionDemo() {
+export function AccordionDemo({ options = demoOptions }) {
   const [openIndex, setOpenIndex] = React.useState(0);
 
   return (
@@ -45,7 +45,7 @@ export function AccordionDemo() {
       }}
       className="w-full"
     >
-      {itmes.map((item, i) => {
+      {options.map((item, i) => {
         const isAboveOpen = openIndex === i - 1;
         const isBelowOpen = openIndex === i + 1;
 
