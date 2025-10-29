@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import List1 from "./components/List1";
 import List2 from "./components/List2";

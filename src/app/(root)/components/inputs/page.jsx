@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import BouncyInput from "./components/BouncyInput";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
