@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentHeading from "@/components/common/ComponentHeading";

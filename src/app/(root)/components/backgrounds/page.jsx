@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Background1 from "./components/Background1";
 import ComponentHeading from "@/components/common/ComponentHeading";
