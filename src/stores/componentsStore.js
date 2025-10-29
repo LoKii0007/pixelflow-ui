@@ -17,11 +17,11 @@ const initialComponents = [
     path: '/components/navbars',
   },
   {
-    id: 'accordians',
-    name: 'Accordians',
+    id: 'accordion',
+    name: 'Accordion',
     description: 'A navigation bar component for site-wide navigation.',
     category: 'layout',
-    path: '/components/accordians',
+    path: '/components/accordion',
   },
   {
     id: 'lists',
