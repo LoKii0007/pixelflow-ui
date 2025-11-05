@@ -4,7 +4,7 @@ import React, { useCallback, useRef, useEffect } from "react";
 import { SELECTION_TYPES } from "@/utils/constants/navigation";
 import TabButton from "@/components/common/TabButton";
 import { useState } from "react";
-import {Loader1Code} from "./Loader1Code";
+import { Loader1Code } from "./Loader1Code";
 import CardLayout from "@/layouts/CardLayout";
 import ReplayBtn from "@/components/common/ReplayBtn";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
@@ -17,6 +17,7 @@ const Navbar1 = () => {
   const [loading, setLoading] = useState(false);
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   const [initialAdjustment, setInitialAdjustment] = useState(0);
+  const [replay, setReplay] = useState(true);
 
   useEffect(() => {
     if (textRef.current) {
@@ -24,14 +25,19 @@ const Navbar1 = () => {
     }
   });
 
-  const playAnimation = useCallback(() => {
+  const playAnimation = () => {
+    setReplay(prev => !prev);
+  };
+
+  useEffect(() => {
+    let interval = null;
     setLoading(true);
     setLoadingPercentage(0);
     if (textRef.current) {
       setInitialAdjustment(textRef.current.offsetWidth);
     }
     let i = 0;
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       if (i === 100) {
         setLoading(false);
       }
@@ -46,11 +52,7 @@ const Navbar1 = () => {
     }, 50);
 
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    playAnimation();
-  }, [playAnimation]);
+  }, [replay]);
 
   const textAdjustment = initialAdjustment * (1 - loadingPercentage / 100);
 
