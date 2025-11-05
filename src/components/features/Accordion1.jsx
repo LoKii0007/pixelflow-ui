@@ -58,8 +58,8 @@ export function AccordionDemo({ options = demoOptions }) {
               isBelowOpen && "border-b rounded-b-2xl"
             )}
           >
-            <AccordionTrigger>{item.title}</AccordionTrigger>
-            <AccordionContent>{item.description}</AccordionContent>
+            <AccordionTrigger className='text-base'>{item.title}</AccordionTrigger>
+            <AccordionContent className="text-sm">{item.description}</AccordionContent>
           </AccordionItem>
         );
       })}

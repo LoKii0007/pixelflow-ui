@@ -4,13 +4,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { SELECTION_TYPES } from "@/utils/constants/navigation";
 import TabButton from "@/components/common/TabButton";
 import CopyBtn from "@/components/common/CopyBtn";
-import { LazyMotion, domAnimation } from "motion/react";
 import * as m from "motion/react-m";
 import { List1Code } from "./List1Code";
 import CardLayout from "@/layouts/CardLayout";
 import ReplayBtn from "@/components/common/ReplayBtn";
 import { Trash } from "lucide-react";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
+import { AnimatePresence, motion } from "framer-motion";
 
 const demo = [
   { id: 1, name: "John Doe", age: 25 },
@@ -23,28 +23,14 @@ const demo = [
 const List1 = () => {
   const [activeTab, setActiveTab] = useState(SELECTION_TYPES.preview);
   const [filteredDemo, setFilteredDemo] = useState(demo);
-  const [deletingId, setDeletingId] = useState(null);
-  const [deletedIndex, setDeletedIndex] = useState(null);
-  const [height, setHeight] = useState(44);
-  const GAP = 6;
 
   const resetAnimation = useCallback(() => {
     setFilteredDemo(demo);
-    setDeletingId(null);
-    setDeletedIndex(null);
   }, []);
 
   const handleDelete = useCallback(
     (id) => {
-      const index = filteredDemo.findIndex((item) => item.id === id);
-      setDeletingId(id);
-      setDeletedIndex(index);
-
-      setTimeout(() => {
-        setFilteredDemo((prev) => prev.filter((p) => p.id !== id));
-        setDeletingId(null);
-        setDeletedIndex(null);
-      }, 600);
+      setFilteredDemo((prev) => prev.filter((p) => p.id !== id));
     },
     [filteredDemo]
   );
@@ -78,40 +64,23 @@ const List1 = () => {
           </div>
 
           <div className="relative">
-            <CardLayout className={'min-h-[400px] md:min-h-[250px]'}
-            >
+            <CardLayout className={"min-h-[400px] md:min-h-[250px]"}>
               {activeTab === SELECTION_TYPES?.preview ? (
                 <>
                   <div className="w-full h-full md:p-4 flex justify-center items-center overflow-x-hidden">
                     <div className={`w-full h-full flex flex-col relative`}>
-                      <LazyMotion features={domAnimation} strict>
-                        {filteredDemo.map((item, index) => {
-                          const isDeleting = deletingId === item.id;
-                          const shouldShiftUp =
-                            deletedIndex !== null && index > deletedIndex;
-                          const top = index * (height + GAP);
-
+                      <AnimatePresence initial={false}>
+                        {filteredDemo.map((item) => {
                           return (
-                            <m.div
+                            <motion.div
                               key={item.id}
-                              initial={{
-                                opacity: 1,
-                                left: 0,
-                                top: `${top}px`,
-                              }}
-                              animate={
-                                isDeleting
-                                  ? { opacity: 0, left: "100%" }
-                                  : shouldShiftUp
-                                  ? { top: `${top - height - GAP}px` }
-                                  : { top: `${top}px`, left: 0 }
-                              }
-                              transition={{ duration: 0.5, ease: "easeInOut" }}
-                              className="w-full flex gap-2 absolute"
+                              initial={{ height: 0 }}
+                              animate={{ height: "auto" }}
+                              exit={{ height: 0 }}
+                              className="w-full flex gap-2"
                             >
                               <div
-                                style={{ height: `${height}px` }}
-                                className={`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 transition-all duration-500 md:grid-cols-4`}
+                                className={`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 md:grid-cols-4`}
                               >
                                 <h1 className="truncate text-sm md:text-base">
                                   {item.name}
@@ -128,10 +97,10 @@ const List1 = () => {
                                   </button>
                                 </div>
                               </div>
-                            </m.div>
+                            </motion.div>
                           );
                         })}
-                      </LazyMotion>
+                      </AnimatePresence>
                     </div>
                   </div>
                   <ReplayBtn resetAnimation={resetAnimation} />
