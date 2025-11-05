@@ -23,11 +23,17 @@ const Sidebar = () => {
                 router.push(`/components/${component.id}`);
               }}
               key={component.id}
-              className={`sidebar-item w-full py-2 px-4 hover:bg-zinc-800 rounded-md cursor-pointer ${
+              className={`sidebar-item w-full group transition-all duration-200 hover:ease-in ease-out py-2 px-4 hover:bg-zinc-800 hover:shadow-zinc-800 rounded-md cursor-pointer ${
                 activeComp?.id === component.id ? "bg-zinc-800" : ""
               }`}
             >
-              {component.name}
+              <h6
+                className={`group-hover:translate-x-1.5 group-hover:ease-in-out ease-out duration-200 transition-all ${
+                  activeComp?.id === component.id ? "translate-x-1.5" : ""
+                } `}
+              >
+                {component.name}
+              </h6>
             </div>
           ))}
         </div>

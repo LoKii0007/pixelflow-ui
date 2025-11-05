@@ -5,12 +5,14 @@ import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentHeading from "@/components/common/ComponentHeading";
 import Navbar3 from "./components/Navbar3";
 import Navbar4 from "./components/Navbar4";
+import Design from "@/components/Design";
 
 const Page = () => {
   return (
     <div className="container">
       <ComponentHeading label="Navbars" description="Navbars" />
 
+      <Design/>
       <ComponentPageLayout>
         <Navbar3 className="col-span-2" />
         <Navbar4 className="col-span-2" />
