@@ -1,4 +1,7 @@
-const Navbar1Code = `import React from "react";
+const Navbar1Code = `
+"use client";
+
+import React from "react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {

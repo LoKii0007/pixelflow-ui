@@ -55,11 +55,12 @@ export function AccordionDemo({ options = demoOptions }) {
             value={`item-${i}`}
             className={cn(
               isAboveOpen && "border-t rounded-t-2xl",
-              isBelowOpen && "border-b rounded-b-2xl"
+              isBelowOpen && "border-b rounded-b-2xl",
+              "border-white/20 hover:bg-zinc-700/20 transition-all duration-300 px-3"
             )}
           >
-            <AccordionTrigger className='text-base'>{item.title}</AccordionTrigger>
-            <AccordionContent className="text-sm">{item.description}</AccordionContent>
+            <AccordionTrigger className='text-lg font-medium'>{item.title}</AccordionTrigger>
+            <AccordionContent className="text-base">{item.description}</AccordionContent>
           </AccordionItem>
         );
       })}

@@ -51,7 +51,7 @@ const SearchDialog = ({ theme }) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <div
-            className={`flex items-center border rounded-md px-3 py-1 cursor-pointer ${
+            className={`flex items-center border-[0.6px] border-white/20 rounded-md px-3 py-1 cursor-pointer ${
               theme === Theme.dark
                 ? "bg-zinc-900 hover:bg-zinc-800 text-gray-50"
                 : "bg-gray-50 hover:bg-gray-100 text-zinc-950"
@@ -75,7 +75,7 @@ const SearchDialog = ({ theme }) => {
               Search Components
             </DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4 py-4">
+          <div className="flex flex-col gap-4 py-4 custom-scrollbar">
             <div className="relative">
               <Input
                 type="text"

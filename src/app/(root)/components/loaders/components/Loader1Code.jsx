@@ -1,4 +1,7 @@
-export const Loader1Code = `import React, { useRef, useEffect } from "react";
+export const Loader1Code = `
+"use client";
+
+import React, { useRef, useEffect } from "react";
 import { useState } from "react";
 
 const Loader = () => {

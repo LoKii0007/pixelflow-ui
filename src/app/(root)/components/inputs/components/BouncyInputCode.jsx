@@ -1,6 +1,8 @@
 
 
 export const BouncyInputCode = `
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 

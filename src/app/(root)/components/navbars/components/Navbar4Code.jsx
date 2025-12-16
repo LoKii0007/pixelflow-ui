@@ -1,4 +1,5 @@
-export const Navbar4Code = `"use client";
+export const Navbar4Code = `
+"use client";
 
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
