@@ -17,7 +17,7 @@ const Navbar = () => {
     <>
       {/* //?mobile Navbar */}
       <nav
-        className={` w-full sticky hidden md:block top-0 z-50 border-b border-gray-600 ${
+        className={` w-full sticky hidden md:block top-0 z-50 border-b-[0.6px] border-white/20 ${
           theme === Theme.dark
             ? "bg-zinc-950 text-gray-50"
             : "bg-gray-50 text-zinc-950"
@@ -46,14 +46,14 @@ const Navbar = () => {
           <div className="nav-right flex items-center gap-4">
             <Link
               target="_blank"
-              href={`https://portfolio-five-rho.vercel.app`}
+              href={`https://lok1.dev`}
               className="nav-link cursor-pointer"
             >
               <Globe className="h-5 w-5" />
             </Link>
             <Link
               target="_blank"
-              href={`https://github.com/LoKii0007`}
+              href={`https://github.com/LoKii0007/pixelflow-ui`}
               className="nav-link cursor-pointer"
             >
               <img src="/images/github.svg" alt="github" className="h-5 w-5" />
@@ -77,7 +77,7 @@ const Navbar = () => {
 
       {/* //? desktop Navbar */}
       <nav
-        className={` w-full sticky block md:hidden top-0 z-50 border-b border-gray-600 ${
+        className={` w-full sticky block md:hidden top-0 z-50 border-b-[0.6px] border-white/20 ${
           theme === Theme.dark
             ? "bg-zinc-950 text-gray-50"
             : "bg-gray-50 text-zinc-950"

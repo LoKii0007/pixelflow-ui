@@ -8,8 +8,8 @@ const TabButton = React.forwardRef(
         ref={activeTab === value ? ref : null}
         onClick={() => setActiveTab(value)}
         className={cn(
-          "px-4 py-2 text-sm font-medium hover:cursor-pointer rounded-full z-20",
-          activeTab === value && ""
+          "px-4 py-2 text-sm font-medium hover:cursor-pointer rounded-full z-20 text-white/80 transition-colors duration-300 delay-150",
+          activeTab === value && "text-white "
         )}
       >
         {label}

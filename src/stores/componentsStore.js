@@ -23,13 +23,13 @@ const initialComponents = [
     category: 'layout',
     path: '/components/accordion',
   },
-  // {
-  //   id: 'lists',
-  //   name: 'Lists',
-  //   description: 'A list component for site-wide navigation.',
-  //   category: 'layout',
-  //   path: '/components/lists',
-  // },
+  {
+    id: 'lists',
+    name: 'Lists',
+    description: 'A list component for site-wide navigation.',
+    category: 'layout',
+    path: '/components/lists',
+  },
   {
     id: 'backgrounds',
     name: 'Backgrounds',

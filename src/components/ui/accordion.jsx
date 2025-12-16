@@ -97,9 +97,7 @@ const AccordionContent = React.forwardRef(
             height: {
               duration: 0.5,
               type:'spring',
-              // stiffness:50,
               bounce:0.3
-              // ease: [0.4, 0, 0.2, 1],
             },
             opacity: {
               duration: 0.2,

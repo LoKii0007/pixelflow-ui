@@ -7,7 +7,6 @@ import { useState, useCallback } from "react";
 import CardLayout from "@/layouts/CardLayout";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
 import CopyBtn from "@/components/common/CopyBtn";
-import { cn } from "@/lib/utils";
 import ReplayBtn from "@/components/common/ReplayBtn";
 
 const ComponentWrapper = ({
@@ -22,7 +21,7 @@ const ComponentWrapper = ({
   const [bgPillSize, setBgPillSize] = useState({
     height: 0,
     width: 0,
-    left: 4,
+    left: 0,
   });
   const [animationKey, setAnimationKey] = useState(0);
 
@@ -39,7 +38,7 @@ const ComponentWrapper = ({
       width: activeTabRef?.current?.getBoundingClientRect()?.width || 0,
       left:
         activeTabRef?.current?.getBoundingClientRect()?.left -
-          parentRef?.current?.getBoundingClientRect()?.left || 4,
+          parentRef?.current?.getBoundingClientRect()?.left || 0,
       height: activeTabRef?.current?.getBoundingClientRect()?.height || 0,
     });
   }, [activeTab]);
@@ -50,7 +49,7 @@ const ComponentWrapper = ({
         <div className="flex justify-between items-center w-full mb-3">
           <div
             ref={parentRef}
-            className="flex items-center gap-4 p-1 border rounded-full relative justify-center"
+            className="flex items-center gap-4 border-[0.6px] border-white/20 rounded-full relative justify-center"
           >
             <div
               style={{
@@ -58,7 +57,7 @@ const ComponentWrapper = ({
                 left: bgPillSize.left,
                 height: bgPillSize.height,
               }}
-              className={`bg-pill transition-all duration-200 absolute bg-cyan-700 z-10 h-[calc(100%-8px)] rounded-full`}
+              className={`transition-all pill duration-200 ease-in-out border-[0.6px] border-white/20 absolute bg-white/20 z-10 h-[calc(100%-8px)] rounded-full`}
             ></div>
             <TabButton
               activeTab={activeTab}

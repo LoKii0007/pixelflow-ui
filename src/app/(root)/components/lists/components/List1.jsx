@@ -4,13 +4,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import { SELECTION_TYPES } from "@/utils/constants/navigation";
 import TabButton from "@/components/common/TabButton";
 import CopyBtn from "@/components/common/CopyBtn";
-import * as m from "motion/react-m";
 import { List1Code } from "./List1Code";
 import CardLayout from "@/layouts/CardLayout";
 import ReplayBtn from "@/components/common/ReplayBtn";
-import { Trash } from "lucide-react";
+import { Trash, Plus } from "lucide-react";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 const demo = [
   { id: 1, name: "John Doe", age: 25 },
@@ -35,11 +34,15 @@ const List1 = () => {
     [filteredDemo]
   );
 
-  useEffect(() => {
-    setTimeout(() => {
-      handleDelete(2);
-    }, 1000);
-  }, []);
+  const handleAdd = useCallback(() => {
+    const newId = Math.max(...filteredDemo.map((item) => item.id), 0) + 1;
+    const newItem = {
+      id: newId,
+      name: `New Item ${newId}`,
+      age: Math.floor(Math.random() * 50) + 20,
+    };
+    setFilteredDemo((prev) => [...prev, newItem]);
+  }, [filteredDemo]);
 
   return (
     <div className="space-y-8">
@@ -67,20 +70,56 @@ const List1 = () => {
             <CardLayout className={"min-h-[400px] md:min-h-[250px]"}>
               {activeTab === SELECTION_TYPES?.preview ? (
                 <>
-                  <div className="w-full h-full md:p-4 flex justify-center items-center overflow-x-hidden">
-                    <div className={`w-full h-full flex flex-col relative`}>
+                  <div className="w-full h-full md:p-4 flex items-center overflow-x-hidden ">
+                    <div
+                      className={`w-full h-full flex flex-col gap-2 max-w-md`}
+                    >
+                      <button
+                        onClick={handleAdd}
+                        className="flex items-center mb-1 justify-center gap-2 bg-zinc-700/20 hover:bg-zinc-700/40 transition-all cursor-pointer duration-300 text-gray-300 hover:text-white rounded-md p-2 border-[0.6px] border-white/20 w-full"
+                      >
+                        <Plus width={18} height={18} />
+                        <span className="text-sm md:text-base">Add Item</span>
+                      </button>
                       <AnimatePresence initial={false}>
                         {filteredDemo.map((item) => {
                           return (
                             <motion.div
                               key={item.id}
-                              initial={{ height: 0 }}
-                              animate={{ height: "auto" }}
-                              exit={{ height: 0 }}
+                              initial={{
+                                opacity: 0,
+                                x: 50,
+                                y: "100%",
+                                height: 0,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                x: 0,
+                                y: 0,
+                                height: "auto",
+                              }}
+                              exit={{ opacity: 0, x: 50, height: 0 }}
+                              transition={{ duration: 0.2, ease: "easeOut" }}
                               className="w-full flex gap-2"
                             >
-                              <div
-                                className={`w-full items-center grid grid-cols-3 border-[0.6px] box-border border-gray-300 rounded-md px-3 py-1 md:grid-cols-4`}
+                              <motion.div
+                                initial={{
+                                  opacity: 0,
+                                  scale: 0.98,
+                                  filter: "blur(4px)",
+                                }}
+                                animate={{
+                                  opacity: 1,
+                                  scale: 1,
+                                  filter: "blur(0px)",
+                                }}
+                                exit={{
+                                  opacity: 0,
+                                  scale: 0.98,
+                                  filter: "blur(4px)",
+                                }}
+                                transition={{ duration: 0.15, ease: "easeOut" }}
+                                className={`w-full items-center grid grid-cols-3 bg-zinc-700/20 origin-right rounded-md p-2 md:grid-cols-4 border-[0.6px] border-white/20 text-gray-300`}
                               >
                                 <h1 className="truncate text-sm md:text-base">
                                   {item.name}
@@ -91,12 +130,12 @@ const List1 = () => {
                                 <div className="flex justify-end items-center w-full md:col-start-4">
                                   <button
                                     onClick={() => handleDelete(item.id)}
-                                    className=" hover:bg-gray-100 transition-all duration-300 text-white hover:text-black p-1 rounded-md w-fit"
+                                    className=" hover:bg-white/80 transition-all hover:ease-out ease-in-out duration-300 text-white hover:text-black p-1 rounded-sm w-fit hover:cursor-pointer"
                                   >
                                     <Trash width={16} height={16} />
                                   </button>
                                 </div>
-                              </div>
+                              </motion.div>
                             </motion.div>
                           );
                         })}

@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     >
       <div className="max-w-[1400px] w-full grid grid-cols-1 mx-auto gap-2 md:grid-cols-12 overflow-x-hidden">
         <Sidebar />
-        <div className="w-full border-gray-600 p-5 overflow-y-auto scrollbar-hide col-span-10 md:p-8 md:border-l">
+        <div className="w-full border-l-[0.6px] border-white/20 p-5 overflow-y-auto scrollbar-hide col-span-10 md:p-8 md:border-l">
           {children}
         </div>
       </div>
