@@ -17,11 +17,10 @@ const Navbar = () => {
     <>
       {/* //?mobile Navbar */}
       <nav
-        className={` w-full sticky hidden md:block top-0 z-50 border-b-[0.6px] border-white/20 ${
-          theme === Theme.dark
+        className={` w-full sticky hidden md:block top-0 z-50 border-b-[0.6px] border-white/20 ${theme === Theme.dark
             ? "bg-zinc-950 text-gray-50"
             : "bg-gray-50 text-zinc-950"
-        } `}
+          } `}
       >
         <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center py-4 px-8 2xl:px-0">
           <div className="nav-left flex items-center gap-6">
@@ -38,9 +37,6 @@ const Navbar = () => {
             >
               Components
             </Link>
-            {/* <Link href={`/playground`} className="nav-link cursor-pointer">
-              Playground
-            </Link> */}
           </div>
 
           <div className="nav-right flex items-center gap-4">
@@ -77,11 +73,10 @@ const Navbar = () => {
 
       {/* //? desktop Navbar */}
       <nav
-        className={` w-full sticky block md:hidden top-0 z-50 border-b-[0.6px] border-white/20 ${
-          theme === Theme.dark
+        className={` w-full sticky block md:hidden top-0 z-50 border-b-[0.6px] border-white/20 ${theme === Theme.dark
             ? "bg-zinc-950 text-gray-50"
             : "bg-gray-50 text-zinc-950"
-        } `}
+          } `}
       >
         <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center p-5 overflow-x-hidden">
           <div className="nav-left flex items-center gap-6">

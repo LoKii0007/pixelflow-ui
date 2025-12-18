@@ -166,7 +166,7 @@ const NavbarCustomizePage = () => {
                   <CopyBtn code={code} />
 
                   {activeTab === activeTabTypes?.preview ? (
-                    <div className="flex justify-center items-center min-h-[200px]">
+                    <div className="flex justify-center items-center ">
                       {customNavbar()}
                     </div>
                   ) : (

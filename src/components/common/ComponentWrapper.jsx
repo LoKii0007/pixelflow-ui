@@ -8,12 +8,14 @@ import CardLayout from "@/layouts/CardLayout";
 import CodeSnippetLayout from "@/layouts/CodeSnippetLayout";
 import CopyBtn from "@/components/common/CopyBtn";
 import ReplayBtn from "@/components/common/ReplayBtn";
+import { cn } from "@/lib/utils";
 
 const ComponentWrapper = ({
   className,
   children,
   replayButton = false,
   codeSnippet = "",
+  cardClassName
 }) => {
   const [activeTab, setActiveTab] = useState(SELECTION_TYPES.preview);
   const activeTabRef = useRef(null);
@@ -38,18 +40,19 @@ const ComponentWrapper = ({
       width: activeTabRef?.current?.getBoundingClientRect()?.width || 0,
       left:
         activeTabRef?.current?.getBoundingClientRect()?.left -
-          parentRef?.current?.getBoundingClientRect()?.left || 0,
+        parentRef?.current?.getBoundingClientRect()?.left || 0,
       height: activeTabRef?.current?.getBoundingClientRect()?.height || 0,
     });
   }, [activeTab]);
 
   return (
-    <section className={className}>
-      <div className=" overflow-hidden">
-        <div className="flex justify-between items-center w-full mb-3">
+    <section className={cn("w-full", className)}>
+      <div className=" overflow-hidden space-y-6">
+
+        <div className="flex justify-between items-center w-full">
           <div
             ref={parentRef}
-            className="flex items-center gap-4 border-[0.6px] border-white/20 rounded-full relative justify-center"
+            className="flex items-center gap-4 border-[0.6px] border-white/20 rounded-[5px] relative justify-center"
           >
             <div
               style={{
@@ -57,7 +60,7 @@ const ComponentWrapper = ({
                 left: bgPillSize.left,
                 height: bgPillSize.height,
               }}
-              className={`transition-all pill duration-200 ease-in-out border-[0.6px] border-white/20 absolute bg-white/20 z-10 h-[calc(100%-8px)] rounded-full`}
+              className={`transition-all pill duration-200 ease-in-out border-[0.6px] border-white/20 absolute bg-white/20 z-10 h-[calc(100%-8px)] rounded-[5px]`}
             ></div>
             <TabButton
               activeTab={activeTab}
@@ -78,10 +81,16 @@ const ComponentWrapper = ({
         </div>
 
         <div className="relative">
-          <CardLayout className="relative ">
+          <CardLayout className={cardClassName}>
             {activeTab === SELECTION_TYPES?.preview ? (
               <>
-                {children}
+                {React.isValidElement(children)
+                  ? React.cloneElement(children, {
+                    key: animationKey,
+                    resetAnimation: replayButton ? resetAnimation : undefined
+                  })
+                  : <div key={animationKey}>{children}</div>
+                }
                 {/* //?replay button  */}
                 {replayButton && <ReplayBtn resetAnimation={resetAnimation} />}
               </>
