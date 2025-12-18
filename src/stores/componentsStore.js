@@ -16,6 +16,13 @@ const initialComponents = [
     category: 'layout',
     path: '/components/navbars',
   },
+  // {
+  //   id: 'buttons',
+  //   name: 'Buttons',
+  //   description: 'A button component for site-wide navigation.',
+  //   category: 'layout',
+  //   path: '/components/buttons',
+  // },
   {
     id: 'accordion',
     name: 'Accordion',
