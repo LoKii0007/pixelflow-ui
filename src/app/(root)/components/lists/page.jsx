@@ -1,11 +1,12 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { List1Demo } from "@/components/features/lists/List1Demo";
+// import { List1Demo } from "@/components/features/lists/List1Demo"; // Removed direct import
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { List1Code } from "@/components/features/lists/List1Code";
+// import { List1Code } from "@/components/features/lists/List1Code"; // Removed direct import
+import List1Wrapper from "@/components/features/lists/List1Wrapper";
 
 export const metadata = {
   title: "Modern List Component | PixelFlow UI",
@@ -61,10 +62,8 @@ const Page = () => {
         description="A modern list component with smooth animations built with Framer Motion."
       />
 
-      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-2'}>
-        <ComponentWrapper className="col-span-1" cardClassName={'min-h-[400px] md:min-h-[250px]'} codeSnippet={List1Code} replayButton={true}>
-          <List1Demo />
-        </ComponentWrapper>
+      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-1'}>
+        <List1Wrapper />
         <DocumentationLayout dependecies={dependecies} />
       </ComponentPageLayout>
     </div>

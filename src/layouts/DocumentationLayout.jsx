@@ -6,7 +6,6 @@ const DocumentationLayout = ({ dependecies = [] }) => {
   return (
     <>
       <div className="flex flex-col gap-8">
-        {/* //? dependecies */}
         {dependecies.length > 0 && (
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl">Dependencies</h1>
@@ -31,8 +30,6 @@ const DocumentationLayout = ({ dependecies = [] }) => {
             ))}
           </div>
         )}
-
-        {/* //? how to */}
       </div>
     </>
   );

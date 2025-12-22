@@ -17,8 +17,6 @@ export default function ComingSoonPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (email) {
-      // Here you would typically send this to your backend
-      console.log("Email submitted:", email)
       setSubmitted(true)
       setTimeout(() => setSubmitted(false), 3000)
       setEmail("")

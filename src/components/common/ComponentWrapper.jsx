@@ -81,7 +81,7 @@ const ComponentWrapper = ({
         </div>
 
         <div className="relative">
-          <CardLayout className={cardClassName}>
+          <CardLayout className={cn("relative", cardClassName)}>
             {activeTab === SELECTION_TYPES?.preview ? (
               <>
                 {React.isValidElement(children)
@@ -91,7 +91,6 @@ const ComponentWrapper = ({
                   })
                   : <div key={animationKey}>{children}</div>
                 }
-                {/* //?replay button  */}
                 {replayButton && <ReplayBtn resetAnimation={resetAnimation} />}
               </>
             ) : (

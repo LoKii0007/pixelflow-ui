@@ -9,17 +9,25 @@ import { useThemeStore } from "@/stores/themeStore";
 import { Theme } from "@/lib/constants";
 import Link from "next/link";
 import MobileSidebar from "./MobileSidebar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { STYLE_MODES } from "@/lib/constants";
 
 const Navbar = () => {
-  const { theme } = useThemeStore();
+  const { theme, styleMode, setStyleMode } = useThemeStore();
 
   return (
     <>
-      {/* //?mobile Navbar */}
       <nav
         className={` w-full sticky hidden md:block top-0 z-50 border-b-[0.6px] border-white/20 ${theme === Theme.dark
-            ? "bg-zinc-950 text-gray-50"
-            : "bg-gray-50 text-zinc-950"
+          ? "bg-zinc-950 text-gray-50"
+          : "bg-gray-50 text-zinc-950"
           } `}
       >
         <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center py-4 px-8 2xl:px-0">
@@ -37,6 +45,12 @@ const Navbar = () => {
             >
               Components
             </Link>
+            <Link
+              href={`/components/loaders`}
+              className="nav-link cursor-pointer"
+            >
+              Loaders
+            </Link>
           </div>
 
           <div className="nav-right flex items-center gap-4">
@@ -47,14 +61,31 @@ const Navbar = () => {
             >
               <Globe className="h-5 w-5" />
             </Link>
-            <Link
-              target="_blank"
-              href={`https://github.com/LoKii0007/pixelflow-ui`}
-              className="nav-link cursor-pointer"
-            >
-              <img src="/images/github.svg" alt="github" className="h-5 w-5" />
-            </Link>
+            <Tooltip>
+              <TooltipTrigger>            <Link
+                target="_blank"
+                href={`https://github.com/LoKii0007/pixelflow-ui`}
+                className="nav-link cursor-pointer"
+              >
+                <img src="/images/github.svg" alt="github" className="h-5 w-5" />
+              </Link></TooltipTrigger>
+              <TooltipContent>
+                <p>Give us a star </p>
+              </TooltipContent>
+            </Tooltip>
             <SearchDialog theme={theme} />
+            <Select value={styleMode} onValueChange={setStyleMode}>
+              <SelectTrigger className="w-[120px] bg-transparent border-white/20">
+                <SelectValue placeholder="Style" />
+              </SelectTrigger>
+              <SelectContent className='bg-zinc-950 text-gray-50'>
+                <SelectItem value={STYLE_MODES.NOVA}>Nova</SelectItem>
+                <SelectItem value={STYLE_MODES.RETRO}>Retro</SelectItem>
+                <SelectItem value={STYLE_MODES.LYRA}>Lyra</SelectItem>
+                {/* <SelectItem value="nova">Nova</SelectItem>
+                <SelectItem value="pixel">Pixel</SelectItem> */}
+              </SelectContent>
+            </Select>
             {/* <Button
               onClick={() => toggleTheme()}
               variant="ghost"
@@ -71,11 +102,10 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* //? desktop Navbar */}
       <nav
         className={` w-full sticky block md:hidden top-0 z-50 border-b-[0.6px] border-white/20 ${theme === Theme.dark
-            ? "bg-zinc-950 text-gray-50"
-            : "bg-gray-50 text-zinc-950"
+          ? "bg-zinc-950 text-gray-50"
+          : "bg-gray-50 text-zinc-950"
           } `}
       >
         <div className="navbar max-w-[1400px] mx-auto flex justify-between items-center p-5 overflow-x-hidden">
