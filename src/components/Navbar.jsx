@@ -37,7 +37,7 @@ const Navbar = () => {
               className="nav-link cursor-pointer flex items-center gap-1"
             >
               <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-              <h1 className="text-2xl font-bold">Pixelflow UI</h1>
+              <h1 className="text-2xl font-bold">PixelflowUI</h1>
             </Link>
             <Link
               href={`/components/navbars`}
@@ -115,10 +115,22 @@ const Navbar = () => {
               className="nav-link cursor-pointer flex items-center gap-1"
             >
               <Image src="/images/logo.png" alt="logo" width={30} height={30} />
-              <h1 className="text-xl font-bold">Pixelflow UI</h1>
+              <h1 className="text-xl font-bold">PixelflowUI</h1>
             </Link>
           </div>
-          <MobileSidebar />
+          <div className="flex gap-2 items-center">
+            <Select value={styleMode} onValueChange={setStyleMode}>
+              <SelectTrigger className="w-[120px] bg-transparent border-white/20">
+                <SelectValue placeholder="Style" />
+              </SelectTrigger>
+              <SelectContent className='bg-zinc-950 text-gray-50'>
+                <SelectItem value={STYLE_MODES.NOVA}>Nova</SelectItem>
+                <SelectItem value={STYLE_MODES.RETRO}>Retro</SelectItem>
+                <SelectItem value={STYLE_MODES.LYRA}>Lyra</SelectItem>
+              </SelectContent>
+            </Select>
+            <MobileSidebar />
+          </div>
         </div>
       </nav>
     </>

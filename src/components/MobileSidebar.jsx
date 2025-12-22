@@ -61,7 +61,7 @@ const MobileSidebar = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-5 border-b border-white/5">
             <span className="text-lg font-bold tracking-tight text-white">
-              PixelFlow UI
+              PixelFlowUI
             </span>
             <button
               onClick={toggleSidebar}
