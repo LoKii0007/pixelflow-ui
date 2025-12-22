@@ -1,17 +1,13 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { Navbar1Demo } from "@/components/features/navbars/Navbar1Demo";
-import { Navbar2Demo } from "@/components/features/navbars/Navbar2Demo";
-import { Navbar3Demo } from "@/components/features/navbars/Navbar3Demo";
-import { Navbar4Demo } from "@/components/features/navbars/Navbar4Demo";
+
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
-import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import Navbar1Code from "@/components/features/navbars/Navbar1Code";
-import Navbar2Code from "@/components/features/navbars/Navbar2Code";
-import { Navbar3Code } from "@/components/features/navbars/Navbar3Code";
-import { Navbar4Code } from "@/components/features/navbars/Navbar4Code";
+import Navbar1Wrapper from "@/components/features/navbars/Navbar1Wrapper";
+import Navbar2Wrapper from "@/components/features/navbars/Navbar2Wrapper";
+import Navbar3Wrapper from "@/components/features/navbars/Navbar3Wrapper";
+import Navbar4Wrapper from "@/components/features/navbars/Navbar4Wrapper";
 
 export const metadata = {
   title: "Modern Navbar Components | PixelFlow UI",
@@ -74,18 +70,10 @@ const Page = () => {
       />
 
       <ComponentPageLayout className={'grid-cols-1'}>
-        <ComponentWrapper className="col-span-1" cardClassName={' !p-0'} codeSnippet={Navbar3Code}>
-          <Navbar3Demo />
-        </ComponentWrapper>
-        <ComponentWrapper className="col-span-1" cardClassName={' bg-black !p-0'} codeSnippet={Navbar4Code}>
-          <Navbar4Demo />
-        </ComponentWrapper>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={Navbar1Code} replayButton={true}>
-          <Navbar1Demo />
-        </ComponentWrapper>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={Navbar2Code} replayButton={true}>
-          <Navbar2Demo />
-        </ComponentWrapper>
+        <Navbar3Wrapper />
+        <Navbar4Wrapper />
+        <Navbar1Wrapper />
+        <Navbar2Wrapper />
         <div className="col-span-1">
           <DocumentationLayout dependecies={dependecies} />
         </div>

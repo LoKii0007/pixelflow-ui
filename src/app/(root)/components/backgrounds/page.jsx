@@ -1,11 +1,12 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { Background1Demo } from "@/components/features/backgrounds/Background1Demo";
+// import { Background1Demo } from "@/components/features/backgrounds/Background1Demo";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { Background1Code } from "@/components/features/backgrounds/Background1Code";
+// import { Background1Code } from "@/components/features/backgrounds/Background1Code";
+import Background1Wrapper from "@/components/features/backgrounds/Background1Wrapper";
 
 export const metadata = {
   title: "Modern Background Component | PixelFlow UI",
@@ -56,9 +57,7 @@ const Page = () => {
       />
 
       <ComponentPageLayout className={'grid-cols-1'}>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={Background1Code}>
-          <Background1Demo />
-        </ComponentWrapper>
+        <Background1Wrapper />
         <DocumentationLayout dependecies={dependecies} />
       </ComponentPageLayout>
     </div>

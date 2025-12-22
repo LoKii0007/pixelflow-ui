@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Theme } from "@/lib/constants";
+import { STYLE_MODES, Theme } from "@/lib/constants";
 
 export const useThemeStore = create(
   persist(
@@ -24,6 +24,9 @@ export const useThemeStore = create(
           useSystemPreference: false,
         });
       },
+
+      styleMode: STYLE_MODES.LYRA,
+      setStyleMode: (mode) => set({ styleMode: mode }),
     }),
     {
       name: "theme-storage",

@@ -1,0 +1,143 @@
+"use client";
+
+import React, { useCallback, useState } from "react";
+import { LazyMotion, domAnimation, AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
+import { Menu, X, ArrowRight } from "lucide-react";
+import ReplayBtn from "@/components/common/ReplayBtn";
+
+export function Navbar1LyraDemo({ resetAnimation: externalResetAnimation }) {
+    const [animationKey, setAnimationKey] = useState(0);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const resetAnimation = useCallback(() => {
+        setAnimationKey((prevKey) => prevKey + 1);
+        setIsMobileMenuOpen(false);
+    }, []);
+
+    const handleReset = externalResetAnimation || resetAnimation;
+
+    const navItems = ["Home", "Products", "Resources", "Pricing"];
+
+    return (
+        <>
+            <div className="flex justify-center items-center ">
+                <LazyMotion features={domAnimation}>
+                    <m.nav
+                        key={animationKey}
+                        initial={{
+                            height: "100%",
+                            width: "100%",
+                            top: 0,
+                            borderRadius: "0px",
+                            background: "rgba(0, 0, 0, 1)",
+                            border: "1px solid rgba(255,255,255,0)",
+                        }}
+                        animate={{
+                            height: isMobileMenuOpen ? "auto" : "60px",
+                            width: "90%",
+                            top: 20,
+                            borderRadius: "0px",
+                            background: "rgba(0, 0, 0, 0.8)",
+                            backdropFilter: "blur(10px)",
+                            border: "1px solid rgba(255,255,255,0.2)",
+                            boxShadow:
+                                "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                        }}
+                        transition={{ duration: 0.8, ease: "anticipate" }}
+                        className="absolute z-20 flex flex-col overflow-hidden text-white"
+                    >
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
+                            className="flex items-center justify-between w-full px-5 h-[60px] flex-shrink-0"
+                        >
+                            <div className="flex items-center gap-2 cursor-pointer">
+                                <div className="w-8 h-8 bg-white flex items-center justify-center text-black font-bold text-xs">
+                                    P
+                                </div>
+                                <span className="text-sm font-semibold text-neutral-200 tracking-tight uppercase">
+                                    PixelFlow
+                                </span>
+                            </div>
+
+                            <div className="hidden md:flex items-center gap-1">
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item}
+                                        href="#"
+                                        className="text-xs uppercase font-medium text-neutral-400 hover:text-white px-3 py-1.5 hover:bg-white/10 transition-all duration-200"
+                                    >
+                                        {item}
+                                    </a>
+                                ))}
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                                <button className="hidden md:flex items-center gap-1 bg-white text-black px-4 py-2 text-xs font-medium hover:bg-neutral-200 transition-colors uppercase">
+                                    Get Started <ArrowRight size={12} />
+                                </button>
+
+                                <button
+                                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                    className="md:hidden p-2 hover:bg-white/10 active:bg-white/20 transition-colors"
+                                >
+                                    {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                                </button>
+                            </div>
+                        </m.div>
+
+                        <AnimatePresence>
+                            {isMobileMenuOpen && (
+                                <m.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className="md:hidden px-4 pb-4 bg-black/50"
+                                >
+                                    <div className="flex flex-col space-y-2 pt-2 border-t border-neutral-800">
+                                        {navItems.map((item, idx) => (
+                                            <m.a
+                                                key={item}
+                                                href="#"
+                                                initial={{ opacity: 0, x: -10 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: idx * 0.05 }}
+                                                className="text-lg font-medium text-neutral-300 hover:text-white py-2 px-2 hover:bg-white/10 transition-colors uppercase"
+                                            >
+                                                {item}
+                                            </m.a>
+                                        ))}
+                                        <m.button
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2 }}
+                                            className="mt-4 w-full bg-white text-black py-3 font-medium flex items-center justify-center gap-2 uppercase text-sm"
+                                        >
+                                            Get Started <ArrowRight size={16} />
+                                        </m.button>
+                                    </div>
+                                </m.div>
+                            )}
+                        </AnimatePresence>
+
+                        <m.div
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none bg-black"
+                        >
+                            <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white uppercase">
+                                PixelFlow<span className="text-neutral-500">UI</span>
+                            </div>
+                        </m.div>
+                    </m.nav>
+                </LazyMotion>
+            </div>
+
+            {!externalResetAnimation && <ReplayBtn resetAnimation={handleReset} />}
+        </>
+    );
+}

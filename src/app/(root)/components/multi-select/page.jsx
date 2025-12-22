@@ -1,12 +1,13 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { MultiSelect1Demo } from "@/components/features/multi-select/MultiSelect1Demo";
+// import { MultiSelect1Demo } from "@/components/features/multi-select/MultiSelect1Demo";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { MultiSelect1Code } from "@/components/features/multi-select/MultiSelect1Code";
-import {MultiSelect1Doc} from "@/components/features/multi-select/MultiSelectDoc";
+// import { MultiSelect1Code } from "@/components/features/multi-select/MultiSelect1Code";
+import MultiSelectWrapper from "@/components/features/multi-select/MultiSelectWrapper";
+import { MultiSelect1Doc } from "@/components/features/multi-select/MultiSelectDoc";
 
 export const metadata = {
   title: "Modern Multi-Select Component | PixelFlow UI",
@@ -62,10 +63,8 @@ const Page = () => {
         description="A modern multi-select component with smooth animations built with Radix UI."
       />
 
-      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-2'}>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={MultiSelect1Code}>
-          <MultiSelect1Demo />
-        </ComponentWrapper>
+      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-1'}>
+        <MultiSelectWrapper />
         <div className="col-span-1">
           <DocumentationLayout dependecies={dependecies} />
           <MultiSelect1Doc />

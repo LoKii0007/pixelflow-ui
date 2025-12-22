@@ -1,11 +1,12 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { Loader1Demo } from "@/components/features/loaders/Loader1Demo";
+// import { Loader1Demo } from "@/components/features/loaders/Loader1Demo";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { Loader1Code } from "@/components/features/loaders/Loader1Code";
+// import { Loader1Code } from "@/components/features/loaders/Loader1Code";
+import Loader1Wrapper from "@/components/features/loaders/Loader1Wrapper";
 
 export const metadata = {
   title: "Modern Loader Component | PixelFlow UI",
@@ -56,9 +57,7 @@ const Page = () => {
       />
 
       <ComponentPageLayout className={'grid-cols-1'}>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={Loader1Code} replayButton={true}>
-          <Loader1Demo />
-        </ComponentWrapper>
+        <Loader1Wrapper />
         <DocumentationLayout dependecies={dependecies} />
       </ComponentPageLayout>
     </div>

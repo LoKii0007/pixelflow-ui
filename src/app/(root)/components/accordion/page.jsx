@@ -1,11 +1,12 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { AccordionDemo } from "@/components/features/accordion/AccordionDemo";
+// import { AccordionDemo } from "@/components/features/accordion/AccordionDemo"; // Removed direct import
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { AccordionCode } from "@/components/features/accordion/AccordionCode";
+// import { AccordionCode } from "@/components/features/accordion/AccordionCode"; // Removed direct import
+import AccordionWrapper from "@/components/features/accordion/AccordionWrapper";
 
 export const metadata = {
   title: "Modern Smooth Animated Accordion | PixelFlow UI",
@@ -69,9 +70,7 @@ const Page = () => {
       />
 
       <ComponentPageLayout className={'grid-cols-1'}>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={AccordionCode}>
-          <AccordionDemo />
-        </ComponentWrapper>
+        <AccordionWrapper />
         <DocumentationLayout dependecies={dependecies} />
       </ComponentPageLayout>
     </div>

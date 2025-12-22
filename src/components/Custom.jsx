@@ -76,7 +76,6 @@ const Custom = ({ onChange }) => {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    console.log(ctx);
     if (!ctx) return;
 
     // Set canvas size

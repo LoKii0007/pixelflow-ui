@@ -1,11 +1,12 @@
 import React from "react";
 
 import ComponentHeading from "@/components/common/ComponentHeading";
-import { BouncyInputDemo } from "@/components/features/inputs/BouncyInputDemo";
+// import { BouncyInputDemo } from "@/components/features/inputs/BouncyInputDemo";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import ComponentWrapper from "@/components/common/ComponentWrapper";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { BouncyInputCode } from "@/components/features/inputs/BouncyInputCode";
+// import { BouncyInputCode } from "@/components/features/inputs/BouncyInputCode";
+import BouncyInputWrapper from "@/components/features/inputs/BouncyInputWrapper";
 
 export const metadata = {
   title: "Bouncy Input Component | PixelFlow UI",
@@ -61,10 +62,8 @@ const Page = () => {
         description="A modern bouncy input component with smooth animations built with Framer Motion."
       />
 
-      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-2'}>
-        <ComponentWrapper className="col-span-1" cardClassName={''} codeSnippet={BouncyInputCode}>
-          <BouncyInputDemo />
-        </ComponentWrapper>
+      <ComponentPageLayout className={'grid-cols-1 md:grid-cols-1'}>
+        <BouncyInputWrapper />
         <DocumentationLayout dependecies={dependecies} />
       </ComponentPageLayout>
     </div>
