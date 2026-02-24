@@ -45,12 +45,6 @@ const Navbar = () => {
             >
               Components
             </Link>
-            <Link
-              href={`/components/loaders`}
-              className="nav-link cursor-pointer"
-            >
-              Loaders
-            </Link>
           </div>
 
           <div className="nav-right flex items-center gap-4">

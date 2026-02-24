@@ -11,13 +11,12 @@ export default function RootLayout({ children }) {
 
   return (
     <div
-      className={`w-full flex justify-center overflow-x-hidden h-[calc(100vh-82px)] ${
-        theme === Theme.dark
-          ? "bg-zinc-950 text-gray-50"
-          : "bg-white text-gray-950"
-      }`}
+      className={`w-full flex justify-center overflow-x-hidden h-[calc(100vh-82px)] ${theme === Theme.dark
+        ? "bg-zinc-950 text-gray-50"
+        : "bg-white text-gray-950"
+        }`}
     >
-      <div className="max-w-[1400px] w-full grid grid-cols-1 mx-auto gap-2 md:grid-cols-12 overflow-x-hidden">
+      <div className="w-full grid grid-cols-1 mx-auto gap-2 md:grid-cols-12 overflow-x-hidden px-5">
         <Sidebar />
         <div className="w-full border-l-[0.6px] border-white/20 p-5 overflow-y-auto scrollbar-hide col-span-10 md:p-8 md:border-l">
           {children}
