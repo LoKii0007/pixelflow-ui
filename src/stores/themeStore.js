@@ -25,7 +25,7 @@ export const useThemeStore = create(
         });
       },
 
-      styleMode: STYLE_MODES.LYRA,
+      styleMode: STYLE_MODES.NOVA,
       setStyleMode: (mode) => set({ styleMode: mode }),
     }),
     {
@@ -34,6 +34,6 @@ export const useThemeStore = create(
         theme: state.theme,
         useSystemPreference: state.useSystemPreference,
       }),
-    }
-  )
+    },
+  ),
 );
