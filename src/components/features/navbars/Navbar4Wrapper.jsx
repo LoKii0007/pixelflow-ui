@@ -6,7 +6,7 @@ import ComponentWrapper from "@/components/common/ComponentWrapper";
 import { Navbar4Demo } from "./nova/Navbar4Demo";
 import { Navbar4RetroDemo } from "./retro/Navbar4RetroDemo";
 import { Navbar4LyraDemo } from "./lyra/Navbar4LyraDemo";
-import Navbar4Code from "./nova/Navbar4Code";
+import { Navbar4Code } from "./nova/Navbar4Code";
 import Navbar4RetroCode from "./retro/Navbar4RetroCode";
 import Navbar4LyraCode from "./lyra/Navbar4LyraCode";
 
