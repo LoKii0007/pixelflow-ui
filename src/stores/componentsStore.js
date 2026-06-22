@@ -87,6 +87,14 @@ const initialComponents = [
     category: "layout",
     path: "/components/status-elevation",
   },
+  {
+    id: "text-effects",
+    name: "Text Effects",
+    description:
+      "Interactive text effects and kinetic typography that respond to the user's cursor.",
+    category: "layout",
+    path: "/components/text-effects",
+  },
 ];
 
 export const useComponentsStore = create((set) => ({
