@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         manrope: ["var(--font-manrope)"],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         primary: {

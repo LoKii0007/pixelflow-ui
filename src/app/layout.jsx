@@ -1,4 +1,4 @@
-import { Manrope } from "next/font/google";
+import { Manrope, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { ZustandProvider } from "@/stores/provider";
 import "./global.css";
@@ -7,6 +7,13 @@ import "./app.css";
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+});
+
+// Inter is loaded as a variable font (full 100–900 weight axis) so that the
+// proximity text effect can smoothly interpolate font-weight on hover.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata = {
@@ -29,7 +36,7 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body
-        className={` ${manrope.variable} antialiased w-full bg-zinc-950 font-manrope`}
+        className={` ${manrope.variable} ${inter.variable} antialiased w-full bg-zinc-950 font-manrope`}
       >
         <ZustandProvider>
           <Navbar />
