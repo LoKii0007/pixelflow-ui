@@ -1,0 +1,534 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "pixelflow-ui",
+  "homepage": "https://pixelflow-ui.vercel.app",
+  "items": [
+    {
+      "name": "accordion-lyra",
+      "type": "registry:component",
+      "title": "Accordion Lyra",
+      "files": [
+        {
+          "path": "src/registry/accordion/lyra/AccordionLyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "accordion-nova",
+      "type": "registry:component",
+      "title": "Accordion Nova",
+      "files": [
+        {
+          "path": "src/registry/accordion/nova/AccordionNova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "accordion-retro",
+      "type": "registry:component",
+      "title": "Accordion Retro",
+      "files": [
+        {
+          "path": "src/registry/accordion/retro/AccordionRetro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "background-1",
+      "type": "registry:component",
+      "title": "Background 1",
+      "files": [
+        {
+          "path": "src/registry/backgrounds/lyra/Background1.jsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "background-1-retro",
+      "type": "registry:component",
+      "title": "Background 1Retro",
+      "files": [
+        {
+          "path": "src/registry/backgrounds/retro/Background1Retro.jsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bouncy-input-lyra",
+      "type": "registry:component",
+      "title": "Bouncy Input Lyra",
+      "files": [
+        {
+          "path": "src/registry/inputs/lyra/BouncyInputLyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "bouncy-input-nova",
+      "type": "registry:component",
+      "title": "Bouncy Input Nova",
+      "files": [
+        {
+          "path": "src/registry/inputs/nova/BouncyInputNova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "bouncy-input-retro",
+      "type": "registry:component",
+      "title": "Bouncy Input Retro",
+      "files": [
+        {
+          "path": "src/registry/inputs/retro/BouncyInputRetro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "button-1",
+      "type": "registry:component",
+      "title": "Button 1",
+      "files": [
+        {
+          "path": "src/registry/buttons/Button1.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:component",
+      "title": "Dropdown",
+      "files": [
+        {
+          "path": "src/registry/dropdown-menu/Dropdown.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ]
+    },
+    {
+      "name": "list-1-lyra",
+      "type": "registry:component",
+      "title": "List 1Lyra",
+      "files": [
+        {
+          "path": "src/registry/lists/lyra/List1Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "list-1-nova",
+      "type": "registry:component",
+      "title": "List 1Nova",
+      "files": [
+        {
+          "path": "src/registry/lists/nova/List1Nova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "list-1-retro",
+      "type": "registry:component",
+      "title": "List 1Retro",
+      "files": [
+        {
+          "path": "src/registry/lists/retro/List1Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "loader-1",
+      "type": "registry:component",
+      "title": "Loader 1",
+      "files": [
+        {
+          "path": "src/registry/loaders/lyra/Loader1.jsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "loader-1-retro",
+      "type": "registry:component",
+      "title": "Loader 1Retro",
+      "files": [
+        {
+          "path": "src/registry/loaders/retro/Loader1Retro.jsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "multi-select-1-lyra",
+      "type": "registry:component",
+      "title": "Multi Select 1Lyra",
+      "files": [
+        {
+          "path": "src/registry/multi-select/lyra/MultiSelect1Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge",
+        "popover",
+        "command"
+      ]
+    },
+    {
+      "name": "multi-select-1-retro",
+      "type": "registry:component",
+      "title": "Multi Select 1Retro",
+      "files": [
+        {
+          "path": "src/registry/multi-select/retro/MultiSelect1Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "multi-select-nova",
+      "type": "registry:component",
+      "title": "Multi Select Nova",
+      "files": [
+        {
+          "path": "src/registry/multi-select/nova/MultiSelectNova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge",
+        "popover",
+        "command"
+      ]
+    },
+    {
+      "name": "navbar-1-lyra",
+      "type": "registry:component",
+      "title": "Navbar 1Lyra",
+      "files": [
+        {
+          "path": "src/registry/navbars/lyra/Navbar1Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-1-nova",
+      "type": "registry:component",
+      "title": "Navbar 1Nova",
+      "files": [
+        {
+          "path": "src/registry/navbars/nova/Navbar1Nova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-1-retro",
+      "type": "registry:component",
+      "title": "Navbar 1Retro",
+      "files": [
+        {
+          "path": "src/registry/navbars/retro/Navbar1Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-2-lyra",
+      "type": "registry:component",
+      "title": "Navbar 2Lyra",
+      "files": [
+        {
+          "path": "src/registry/navbars/lyra/Navbar2Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-2-nova",
+      "type": "registry:component",
+      "title": "Navbar 2Nova",
+      "files": [
+        {
+          "path": "src/registry/navbars/nova/Navbar2Nova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-2-retro",
+      "type": "registry:component",
+      "title": "Navbar 2Retro",
+      "files": [
+        {
+          "path": "src/registry/navbars/retro/Navbar2Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-3-lyra",
+      "type": "registry:component",
+      "title": "Navbar 3Lyra",
+      "files": [
+        {
+          "path": "src/registry/navbars/lyra/Navbar3Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "next",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-3-nova",
+      "type": "registry:component",
+      "title": "Navbar 3Nova",
+      "files": [
+        {
+          "path": "src/registry/navbars/nova/Navbar3Nova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "next"
+      ]
+    },
+    {
+      "name": "navbar-3-retro",
+      "type": "registry:component",
+      "title": "Navbar 3Retro",
+      "files": [
+        {
+          "path": "src/registry/navbars/retro/Navbar3Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "next"
+      ]
+    },
+    {
+      "name": "navbar-4",
+      "type": "registry:component",
+      "title": "Navbar 4",
+      "files": [
+        {
+          "path": "src/registry/navbars/nova/Navbar4.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@gsap/react",
+        "gsap",
+        "next",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-4-lyra",
+      "type": "registry:component",
+      "title": "Navbar 4Lyra",
+      "files": [
+        {
+          "path": "src/registry/navbars/lyra/Navbar4Lyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@gsap/react",
+        "gsap",
+        "next",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "navbar-4-retro",
+      "type": "registry:component",
+      "title": "Navbar 4Retro",
+      "files": [
+        {
+          "path": "src/registry/navbars/retro/Navbar4Retro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@gsap/react",
+        "gsap",
+        "next",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "proximity-text",
+      "type": "registry:component",
+      "title": "Proximity Text",
+      "files": [
+        {
+          "path": "src/registry/text-effects/nova/ProximityText.jsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "status-elevation",
+      "type": "registry:component",
+      "title": "Status Elevation",
+      "files": [
+        {
+          "path": "src/registry/status-elevation/StatusElevation.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "status-elevation-lyra",
+      "type": "registry:component",
+      "title": "Status Elevation Lyra",
+      "files": [
+        {
+          "path": "src/registry/status-elevation/lyra/StatusElevationLyra.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "status-elevation-nova",
+      "type": "registry:component",
+      "title": "Status Elevation Nova",
+      "files": [
+        {
+          "path": "src/registry/status-elevation/nova/StatusElevationNova.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "status-elevation-retro",
+      "type": "registry:component",
+      "title": "Status Elevation Retro",
+      "files": [
+        {
+          "path": "src/registry/status-elevation/retro/StatusElevationRetro.jsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "background-1-retro",
+  "title": "Background 1Retro",
+  "files": [
+    {
+      "path": "src/registry/backgrounds/retro/Background1Retro.jsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nexport function Background1Retro() {\n  return (\n    <div className=\"absolute inset-0 overflow-hidden bg-white font-mono z-0\">\n        {/* Grid Pattern */}\n        <div className=\"absolute inset-0 bg-[linear-gradient(to_right,#0000001a_1px,transparent_1px),linear-gradient(to_bottom,#0000001a_1px,transparent_1px)] bg-[size:40px_40px]\"></div>\n        \n        {/* Dots Pattern */}\n        <div className=\"absolute inset-0 bg-[radial-gradient(#00000033_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_100%)]\"></div>\n        \n        {/* Floating elements */}\n        <div className=\"absolute top-10 left-10 text-[10vw] text-black/5 font-black uppercase pointer-events-none select-none\">\n            RETRO_UI\n        </div>\n         <div className=\"absolute bottom-10 right-10 text-[10vw] text-black/5 font-black uppercase pointer-events-none select-none\">\n            SYSTEM\n        </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
