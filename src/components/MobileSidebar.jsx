@@ -19,9 +19,18 @@ const MobileSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const activeComp = useMemo(() => {
-    return allComponents.find((component) => pathname.includes(component.path));
+  const activeCategory = useMemo(() => {
+    return allComponents.find((component) =>
+      pathname.includes(`/components/${component.id}`)
+    );
   }, [allComponents, pathname]);
+
+  const activeItem = useMemo(() => {
+    if (!activeCategory) return null;
+    return activeCategory.items?.find((item) =>
+      pathname.includes(`/components/${activeCategory.id}/${item.id}`)
+    );
+  }, [activeCategory, pathname]);
 
   const toggleSidebar = () => {
     setIsOpen((prev) => !prev);
@@ -95,23 +104,60 @@ const MobileSidebar = () => {
                 </AccordionTrigger>
                 <AccordionContent className="pb-0 pt-2">
                   <div className="flex flex-col gap-1 pl-4 border-l border-white/10 ml-4">
-                    {allComponents.map((component) => (
-                      <button
-                        key={component.id}
-                        onClick={() => handleNavigation(component.path)}
-                        className={cn(
-                          "w-full text-left px-4 py-2.5 rounded-md text-sm transition-all duration-200 flex items-center justify-between group",
-                          activeComp?.id === component.id
-                            ? "text-white bg-white/10 font-medium"
-                            : "text-neutral-500 hover:text-neutral-200 hover:bg-white/5"
-                        )}
-                      >
-                        {component.name}
-                        {activeComp?.id === component.id && (
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                        )}
-                      </button>
-                    ))}
+                    <Accordion
+                      type="single"
+                      collapsible
+                      defaultValue={activeCategory?.id}
+                    >
+                      {allComponents.map((component) => (
+                        <AccordionItem
+                          key={component.id}
+                          value={component.id}
+                          className="border-none"
+                        >
+                          <AccordionTrigger
+                            className={cn(
+                              "px-4 py-2.5 rounded-md text-sm transition-all duration-200 hover:no-underline [&[data-state=open]>svg]:rotate-90",
+                              activeCategory?.id === component.id
+                                ? "text-white font-medium"
+                                : "text-neutral-400 hover:text-neutral-200"
+                            )}
+                          >
+                            {component.name}
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-0 pt-1">
+                            <div className="flex flex-col gap-1 pl-3 border-l border-white/10 ml-4">
+                              {component.items?.map((item) => {
+                                const isActiveItem =
+                                  activeCategory?.id === component.id &&
+                                  activeItem?.id === item.id;
+                                return (
+                                  <button
+                                    key={item.id}
+                                    onClick={() =>
+                                      handleNavigation(
+                                        `/components/${component.id}/${item.id}`
+                                      )
+                                    }
+                                    className={cn(
+                                      "w-full text-left px-4 py-2 rounded-md text-sm transition-all duration-200 flex items-center justify-between group",
+                                      isActiveItem
+                                        ? "text-white bg-white/10 font-medium"
+                                        : "text-neutral-500 hover:text-neutral-200 hover:bg-white/5"
+                                    )}
+                                  >
+                                    {item.name}
+                                    {isActiveItem && (
+                                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
                   </div>
                 </AccordionContent>
               </AccordionItem>

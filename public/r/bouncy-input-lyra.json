@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bouncy-input-lyra",
+  "title": "Bouncy Input Lyra",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/registry/inputs/lyra/BouncyInputLyra.jsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect } from \"react\";\nimport { motion, useAnimation } from \"motion/react\";\n\nconst BouncyInput = () => {\n  const [value, setValue] = useState(\"\");\n  const controls = useAnimation();\n\n  // re-trigger bounce whenever value changes\n  useEffect(() => {\n    controls.start({\n      scaleX: [1, 1.01, 1],\n      scaleY: [1, 1.1, 1],\n      transition: { duration: 0.2, ease: \"easeInOut\" },\n    });\n  }, [value, controls]);\n\n  return (\n    <div className=\"relative justify-center items-center w-full\">\n      {/* Animated Border Container */}\n      <motion.div\n        animate={controls}\n        className=\"h-full w-full max-w-md flex items-center justify-center overflow-hidden border-[0.6px] box-border border-white/40 bg-black text-white px-3 py-2 absolute z-10\"\n      ></motion.div>\n      \n      {/* Actual Input */}\n      <input\n        placeholder=\"TYPE SOMETHING...\"\n        type=\"text\"\n        className=\"w-full max-w-md bg-transparent text-white placeholder:text-neutral-600 focus:outline-none px-3 py-2 z-20 relative font-mono text-xs uppercase tracking-wider\"\n        value={value}\n        onChange={(e) => setValue(e.target.value)}\n      />\n      \n      {/* Decorative Corner */}\n      <div className=\"absolute top-0 right-0 w-2 h-2 border-t border-r border-white pointer-events-none z-30\" />\n    </div>\n  );\n};\n\nexport default BouncyInput;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

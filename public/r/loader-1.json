@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-1",
+  "title": "Loader 1",
+  "files": [
+    {
+      "path": "src/registry/loaders/lyra/Loader1.jsx",
+      "content": "\"use client\";\n\nimport React, { useRef, useEffect } from \"react\";\nimport { useState } from \"react\";\n\nconst Loader = () => {\n  const textRef = useRef(null);\n  const [loading, setLoading] = useState(false);\n  const [loadingPercentage, setLoadingPercentage] = useState(0);\n  const [initialAdjustment, setInitialAdjustment] = useState(0);\n\n  useEffect(() => {\n    if (textRef.current) {\n      setInitialAdjustment(textRef.current.offsetWidth);\n    }\n  });\n\n  useEffect(() => {\n    let i = 0;\n    const interval = setInterval(() => {\n      if (i === 100) {\n        setLoading(false);\n      }\n      setLoadingPercentage((prev) => {\n        if (prev >= 100) {\n          clearInterval(interval);\n          return 100;\n        }\n        return prev + 1;\n      });\n      i++;\n    }, 50);\n\n    return () => clearInterval(interval);\n  }, []);\n\n  const textAdjustment = initialAdjustment * (1 - loadingPercentage / 100);\n\n  return (\n    <div className=\"loading-page w-[100vw] h-[100vh] overflow-hidden relative z-10\">\n      <div className=\"bg-black h-full w-full z-[10]\"></div>\n      <div\n        style={{ right: `${100 - loadingPercentage}%` }}\n        className=\"bg-white h-full w-full absolute z-[30] top-0 overflow-hidden transition-all ease\"\n      >\n        <div\n          style={{ right: `-${textAdjustment}px` }}\n          className=\"text-black z-[40] bottom-0 absolute text-[100px] px-5 inner-text\"\n        >\n          {loadingPercentage}\n        </div>\n      </div>\n      <div\n        ref={textRef}\n        style={{\n          right: `calc(${100 - loadingPercentage}% - ${textAdjustment}px)`,\n        }}\n        className=\"text-white z-[20] bottom-0 absolute text-[100px] transition-all ease px-5 outer-text\"\n      >\n        {loadingPercentage}\n      </div>\n    </div>\n  );\n};\n\nexport default Loader;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

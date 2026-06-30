@@ -19,31 +19,48 @@ import { useRouter } from "next/navigation";
 const SearchDialog = ({ theme }) => {
   const { components: allComponents } = useComponentsStore();
   const router = useRouter();
-  const [filteredComponents, setfilteredComponents] = useState(
-    allComponents || []
+
+  // Flatten every nested component into a searchable, navigable list so each
+  // individual component shows up as its own search result.
+  const searchableItems = React.useMemo(
+    () =>
+      allComponents.flatMap((category) =>
+        (category.items || []).map((item) => ({
+          id: `${category.id}/${item.id}`,
+          name: item.name,
+          category: category.name,
+          path: `/components/${category.id}/${item.id}`,
+        }))
+      ),
+    [allComponents]
   );
+
+  const [filteredComponents, setfilteredComponents] = useState(searchableItems);
   const [searchQuery, setsearchQuery] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleSearchChange = (e) => {
-    setsearchQuery(e.target.value);
+    const value = e.target.value;
+    setsearchQuery(value);
     setfilteredComponents(
-      allComponents.filter((component) =>
-        component.name.toLowerCase().includes(e.target.value.toLowerCase())
+      searchableItems.filter(
+        (component) =>
+          component.name.toLowerCase().includes(value.toLowerCase()) ||
+          component.category.toLowerCase().includes(value.toLowerCase())
       )
     );
   };
 
   const handleClearSearch = () => {
     setsearchQuery("");
-    setfilteredComponents(allComponents);
+    setfilteredComponents(searchableItems);
   };
 
   const handleLinkClick = (componentPath) => {
     setOpen(false);
     router.push(componentPath);
     setsearchQuery("");
-    setfilteredComponents(allComponents);
+    setfilteredComponents(searchableItems);
   };
 
   return (
@@ -116,8 +133,11 @@ const SearchDialog = ({ theme }) => {
                         : "hover:bg-gray-100 text-zinc-950"
                     }`}
                   >
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center">
                       <h3 className="font-medium">{component.name}</h3>
+                      <span className="text-xs text-gray-500">
+                        {component.category}
+                      </span>
                     </div>
                   </div>
                 ))}
