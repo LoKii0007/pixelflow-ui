@@ -2,7 +2,8 @@
 const nextConfig = {
   // Allow `import code from "./file.jsx?raw"` so the showcase can display a
   // component's real source (the same files the shadcn registry distributes).
-  // Note: this uses webpack, so `next dev` must run WITHOUT `--turbopack`.
+  // Note: this uses webpack, so dev/build run with the `--webpack` flag
+  // (Next 16 defaults to Turbopack, which doesn't apply this `?raw` shim).
   webpack: (config) => {
     // Exclude `?raw` imports from every Next loader that transforms JS (SWC +
     // react-refresh). Otherwise those loaders run on the raw source and the
