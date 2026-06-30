@@ -1,23 +1,37 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import * as React from "react";
+import * as SliderPrimitive from "@radix-ui/react-slider";
 
-const Slider = ({
-  defaultValue = 55,
-  min = 0,
-  max = 100,
-  step = 1,
-  onChange,
-  color = "#000000",
-  showTicks = true,
-  tickCount = 22,
-  size = "md",
-  disabled = false,
-  className = "",
-}) => {
-  const [value, setValue] = useState(defaultValue);
-  const trackRef = useRef(null);
-  const isDragging = useRef(false);
+const Slider = React.forwardRef(function Slider(
+  {
+    value,
+    defaultValue = 55,
+    min = 0,
+    max = 100,
+    step = 1,
+    onChange,
+    onValueChange,
+    name,
+    color = "#000000",
+    showTicks = true,
+    tickCount = 22,
+    size = "md",
+    disabled = false,
+    className = "",
+    ...props
+  },
+  ref,
+) {
+  // Mirror the current value so the fill / tick / thumb position can be computed
+  // during render. Radix remains the source of truth for controlled /
+  // uncontrolled behaviour, keyboard, dragging, a11y and form submission.
+  const [current, setCurrent] = React.useState(
+    value !== undefined ? value : defaultValue,
+  );
+  React.useEffect(() => {
+    if (value !== undefined) setCurrent(value);
+  }, [value]);
 
   const sizeMap = {
     sm: { outer: "h-10 p-1", thumb: "w-3.5 h-3.5", tick: 14 },
@@ -26,105 +40,81 @@ const Slider = ({
   };
 
   const { outer, thumb, tick } = sizeMap[size] || sizeMap.md;
-  const pct = ((value - min) / (max - min)) * 100;
+  const pct = ((current - min) / (max - min)) * 100;
 
-  const clampToStep = useCallback(
-    (raw) => {
-      const clamped = Math.min(max, Math.max(min, raw));
-      return Math.round(clamped / step) * step;
-    },
-    [min, max, step],
-  );
-
-  const updateFromEvent = useCallback(
-    (e) => {
-      if (!trackRef.current || disabled) return;
-      const rect = trackRef.current.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const ratio = Math.min(
-        1,
-        Math.max(0, (clientX - rect.left) / rect.width),
-      );
-      const next = clampToStep(min + ratio * (max - min));
-      setValue(next);
-      onChange?.(next);
-    },
-    [min, max, clampToStep, onChange, disabled],
-  );
-
-  const onPointerDown = (e) => {
-    if (disabled) return;
-    isDragging.current = true;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    updateFromEvent(e);
-  };
-
-  const onPointerMove = (e) => {
-    if (!isDragging.current) return;
-    updateFromEvent(e);
-  };
-
-  const onPointerUp = () => {
-    isDragging.current = false;
+  const handleValueChange = (values) => {
+    const next = values[0];
+    setCurrent(next);
+    onChange?.(next);
+    onValueChange?.(next);
   };
 
   return (
-    <div className={`w-full select-none ${className}`}>
-      {/* Outer white pill */}
-      <div
-        ref={trackRef}
-        className={`relative w-full ${outer} rounded-full cursor-pointer bg-white`}
-        style={{ boxShadow: "0 6px 16px rgba(0,0,0,0.12)", touchAction: "none" }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
-      >
-        {/* Inner track */}
-        <div className="relative w-full h-full rounded-full overflow-hidden">
-          {/* Orange filled portion */}
-          <div
-            className="absolute inset-y-0 left-0 rounded-full transition-none"
-            style={{ width: `${pct}%`, backgroundColor: color }}
-          />
+    <SliderPrimitive.Root
+      ref={ref}
+      value={value !== undefined ? [value] : undefined}
+      defaultValue={value === undefined ? [defaultValue] : undefined}
+      min={min}
+      max={max}
+      step={step}
+      name={name}
+      disabled={disabled}
+      onValueChange={handleValueChange}
+      className={`relative flex w-full items-center touch-none select-none ${outer} rounded-full cursor-pointer bg-white data-[disabled]:opacity-50 focus-within:ring-2 focus-within:ring-black/40 ${className}`}
+      style={{ boxShadow: "0 6px 16px rgba(0,0,0,0.12)" }}
+      {...props}
+    >
+      {/* Inner track */}
+      <SliderPrimitive.Track className="relative w-full h-full rounded-full overflow-hidden">
+        {/* Orange filled portion */}
+        <SliderPrimitive.Range
+          className="absolute inset-y-0 rounded-full"
+          style={{ backgroundColor: color }}
+        />
 
-          {/* Tick marks across the full track */}
-          {showTicks && (
-            <div className="absolute inset-0 flex items-center px-3 pointer-events-none">
-              {Array.from({ length: tickCount }).map((_, i) => {
-                const filled = (i + 0.5) / tickCount <= pct / 100;
-                return (
-                  <div key={i} className="flex-1 flex justify-center">
-                    <div
-                      className="rounded-full"
-                      style={{
-                        width: "2px",
-                        height: `${tick}px`,
-                        backgroundColor: filled
-                          ? "rgba(255,255,255,0.55)"
-                          : "#d8d8d8",
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        {/* Tick marks across the full track */}
+        {showTicks && (
+          <div className="absolute inset-0 flex items-center px-3 pointer-events-none">
+            {Array.from({ length: tickCount }).map((_, i) => {
+              const filled = (i + 0.5) / tickCount <= pct / 100;
+              return (
+                <div key={i} className="flex-1 flex justify-center">
+                  <div
+                    className="rounded-full"
+                    style={{
+                      width: "2px",
+                      height: `${tick}px`,
+                      backgroundColor: filled
+                        ? "rgba(255,255,255,0.55)"
+                        : "#d8d8d8",
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
 
+        {/* White thumb dot — pinned to the fill edge, in the track's own
+            coordinate space so it never drifts with progress */}
+        <div
+          className={`absolute top-1/2 ${thumb} bg-white rounded-full pointer-events-none`}
+          style={{
+            left: `${pct}%`,
+            transform: "translate(calc(-100% - 4px), -50%)",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+          }}
+        />
+      </SliderPrimitive.Track>
 
-          {/* White thumb dot */}
-          <div
-            className={`absolute top-1/2 ${thumb} bg-white rounded-full pointer-events-none transition-none`}
-            style={{
-              left: `${pct}%`,
-              transform: `translate(calc(-100% - 4px), -50%)`,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
-            }}
-          />
-        </div>
-      </div>
-    </div>
+      {/* Radix thumb — kept for keyboard, dragging and a11y, visually hidden
+          since the dot above is the rendered handle */}
+      <SliderPrimitive.Thumb
+        aria-label="Value"
+        className="block size-0 opacity-0 outline-none"
+      />
+    </SliderPrimitive.Root>
   );
-};
+});
 
 export default Slider;
