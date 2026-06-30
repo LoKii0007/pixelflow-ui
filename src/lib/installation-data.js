@@ -12,18 +12,18 @@ export const REGISTRY_HOME = "https://pixelflow-ui.vercel.app";
 // When a style-specific variant doesn't exist the entry falls back to the
 // closest available one (resolved by getRegistryName below).
 const registryNames = {
-  "navbar-1": { nova: "navbar-1-nova", lyra: "navbar-1-lyra", retro: "navbar-1-retro" },
-  "navbar-2": { nova: "navbar-2-nova", lyra: "navbar-2-lyra", retro: "navbar-2-retro" },
-  "navbar-3": { nova: "navbar-3-nova", lyra: "navbar-3-lyra", retro: "navbar-3-retro" },
-  "navbar-4": { nova: "navbar-4", lyra: "navbar-4-lyra", retro: "navbar-4-retro" },
-  "accordion-1": { nova: "accordion-nova", lyra: "accordion-lyra", retro: "accordion-retro" },
-  "list-1": { nova: "list-1-nova", lyra: "list-1-lyra", retro: "list-1-retro" },
-  "background-1": { nova: "background-1", lyra: "background-1", retro: "background-1-retro" },
-  "multi-select-1": { nova: "multi-select-nova", lyra: "multi-select-1-lyra", retro: "multi-select-1-retro" },
-  "bouncy-input": { nova: "bouncy-input-nova", lyra: "bouncy-input-lyra", retro: "bouncy-input-retro" },
-  "loader-1": { nova: "loader-1", lyra: "loader-1", retro: "loader-1-retro" },
-  "status-elevation-1": { nova: "status-elevation-nova", lyra: "status-elevation-lyra", retro: "status-elevation-retro" },
-  "proximity-text": { nova: "proximity-text", lyra: "proximity-text", retro: "proximity-text" },
+  "navbar-00": { nova: "navbar-1-nova", lyra: "navbar-1-lyra", retro: "navbar-1-retro" },
+  "navbar-01": { nova: "navbar-2-nova", lyra: "navbar-2-lyra", retro: "navbar-2-retro" },
+  "navbar-02": { nova: "navbar-3-nova", lyra: "navbar-3-lyra", retro: "navbar-3-retro" },
+  "navbar-03": { nova: "navbar-4", lyra: "navbar-4-lyra", retro: "navbar-4-retro" },
+  "accordion-00": { nova: "accordion-nova", lyra: "accordion-lyra", retro: "accordion-retro" },
+  "list-00": { nova: "list-1-nova", lyra: "list-1-lyra", retro: "list-1-retro" },
+  "background-00": { nova: "background-1", lyra: "background-1", retro: "background-1-retro" },
+  "multi-select-00": { nova: "multi-select-nova", lyra: "multi-select-1-lyra", retro: "multi-select-1-retro" },
+  "bouncy-input-00": { nova: "bouncy-input-nova", lyra: "bouncy-input-lyra", retro: "bouncy-input-retro" },
+  "loader-00": { nova: "loader-1", lyra: "loader-1", retro: "loader-1-retro" },
+  "status-elevation-00": { nova: "status-elevation-nova", lyra: "status-elevation-lyra", retro: "status-elevation-retro" },
+  "proximity-text-00": { nova: "proximity-text", lyra: "proximity-text", retro: "proximity-text" },
 };
 
 // Resolve the registry name for an item in the active style, falling back to

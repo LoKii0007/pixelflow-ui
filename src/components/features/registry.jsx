@@ -4,36 +4,38 @@
 // client wrapper that renders its preview + code. Also exposes any extra
 // documentation blocks that belong to a category.
 
-import Navbar1Wrapper from "@/components/features/navbars/Navbar1Wrapper";
-import Navbar2Wrapper from "@/components/features/navbars/Navbar2Wrapper";
-import Navbar3Wrapper from "@/components/features/navbars/Navbar3Wrapper";
-import Navbar4Wrapper from "@/components/features/navbars/Navbar4Wrapper";
-import AccordionWrapper from "@/components/features/accordion/AccordionWrapper";
-import List1Wrapper from "@/components/features/lists/List1Wrapper";
-import Background1Wrapper from "@/components/features/backgrounds/Background1Wrapper";
-import MultiSelectWrapper from "@/components/features/multi-select/MultiSelectWrapper";
-import BouncyInputWrapper from "@/components/features/inputs/BouncyInputWrapper";
-import Loader1Wrapper from "@/components/features/loaders/Loader1Wrapper";
-import StatusElevationWrapper from "@/components/features/status-elevation/StatusElevationWrapper";
-import ProximityTextWrapper from "@/components/features/text-effects/ProximityTextWrapper";
-import { MultiSelect1Doc } from "@/components/features/multi-select/MultiSelectDoc";
+import Navbar00Wrapper from "@/components/features/navbars/Navbar00Wrapper";
+import Navbar01Wrapper from "@/components/features/navbars/Navbar01Wrapper";
+import Navbar02Wrapper from "@/components/features/navbars/Navbar02Wrapper";
+import Navbar03Wrapper from "@/components/features/navbars/Navbar03Wrapper";
+import Accordion00Wrapper from "@/components/features/accordion/Accordion00Wrapper";
+import List00Wrapper from "@/components/features/lists/List00Wrapper";
+import Background00Wrapper from "@/components/features/backgrounds/Background00Wrapper";
+import MultiSelect00Wrapper from "@/components/features/multi-select/MultiSelect00Wrapper";
+import BouncyInput00Wrapper from "@/components/features/inputs/BouncyInput00Wrapper";
+import Loader00Wrapper from "@/components/features/loaders/Loader00Wrapper";
+import StatusElevation00Wrapper from "@/components/features/status-elevation/StatusElevation00Wrapper";
+import ProximityText00Wrapper from "@/components/features/text-effects/ProximityText00Wrapper";
+import Slider00Wrapper from "@/components/features/sliders/Slider00Wrapper";
+import { MultiSelect00Doc } from "@/components/features/multi-select/MultiSelect00Doc";
 
 export const wrapperRegistry = {
-  "navbar-1": Navbar1Wrapper,
-  "navbar-2": Navbar2Wrapper,
-  "navbar-3": Navbar3Wrapper,
-  "navbar-4": Navbar4Wrapper,
-  "accordion-1": AccordionWrapper,
-  "list-1": List1Wrapper,
-  "background-1": Background1Wrapper,
-  "multi-select-1": MultiSelectWrapper,
-  "bouncy-input": BouncyInputWrapper,
-  "loader-1": Loader1Wrapper,
-  "status-elevation-1": StatusElevationWrapper,
-  "proximity-text": ProximityTextWrapper,
+  "navbar-00": Navbar00Wrapper,
+  "navbar-01": Navbar01Wrapper,
+  "navbar-02": Navbar02Wrapper,
+  "navbar-03": Navbar03Wrapper,
+  "accordion-00": Accordion00Wrapper,
+  "list-00": List00Wrapper,
+  "background-00": Background00Wrapper,
+  "multi-select-00": MultiSelect00Wrapper,
+  "bouncy-input-00": BouncyInput00Wrapper,
+  "loader-00": Loader00Wrapper,
+  "status-elevation-00": StatusElevation00Wrapper,
+  "proximity-text-00": ProximityText00Wrapper,
+  "slider-00": Slider00Wrapper,
 };
 
 // Extra documentation blocks keyed by category id.
 export const extraDocRegistry = {
-  "multi-select": MultiSelect1Doc,
+  "multi-select": MultiSelect00Doc,
 };

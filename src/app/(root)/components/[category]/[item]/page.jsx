@@ -15,9 +15,10 @@ export function generateStaticParams() {
   );
 }
 
-export function generateMetadata({ params }) {
-  const category = getCategory(params.category);
-  const item = getItem(params.category, params.item);
+export async function generateMetadata({ params }) {
+  const { category: categoryId, item: itemId } = await params;
+  const category = getCategory(categoryId);
+  const item = getItem(categoryId, itemId);
   if (!category || !item) return {};
 
   const title = `${item.name} | ${category.name} | PixelFlow UI`;
@@ -43,9 +44,10 @@ export function generateMetadata({ params }) {
   };
 }
 
-const ComponentItemPage = ({ params }) => {
-  const category = getCategory(params.category);
-  const item = getItem(params.category, params.item);
+const ComponentItemPage = async ({ params }) => {
+  const { category: categoryId, item: itemId } = await params;
+  const category = getCategory(categoryId);
+  const item = getItem(categoryId, itemId);
 
   if (!category || !item) {
     notFound();

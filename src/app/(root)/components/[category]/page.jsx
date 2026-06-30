@@ -5,8 +5,9 @@ export function generateStaticParams() {
   return componentCategories.map((category) => ({ category: category.id }));
 }
 
-export function generateMetadata({ params }) {
-  const category = getCategory(params.category);
+export async function generateMetadata({ params }) {
+  const { category: categoryId } = await params;
+  const category = getCategory(categoryId);
   if (!category) return {};
   return {
     ...category.metadata,
@@ -23,8 +24,9 @@ export function generateMetadata({ params }) {
 
 // A category landing page redirects to its first nested component so that
 // only one component is ever shown per page.
-const CategoryPage = ({ params }) => {
-  const category = getCategory(params.category);
+const CategoryPage = async ({ params }) => {
+  const { category: categoryId } = await params;
+  const category = getCategory(categoryId);
 
   if (!category || category.items.length === 0) {
     notFound();

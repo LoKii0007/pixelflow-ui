@@ -60,26 +60,26 @@ export const componentCategories = [
     ],
     items: [
       {
-        id: "navbar-1",
-        name: "Navbar 1",
+        id: "navbar-00",
+        name: "Navbar 00",
         description:
           "An animated navbar component built with Framer Motion and GSAP.",
       },
       {
-        id: "navbar-2",
-        name: "Navbar 2",
+        id: "navbar-01",
+        name: "Navbar 01",
         description:
           "An animated navbar component built with Framer Motion and GSAP.",
       },
       {
-        id: "navbar-3",
-        name: "Navbar 3",
+        id: "navbar-02",
+        name: "Navbar 02",
         description:
           "An animated navbar component built with Framer Motion and GSAP.",
       },
       {
-        id: "navbar-4",
-        name: "Navbar 4",
+        id: "navbar-03",
+        name: "Navbar 03",
         description:
           "An animated navbar component built with Framer Motion and GSAP.",
       },
@@ -112,8 +112,8 @@ export const componentCategories = [
     ],
     items: [
       {
-        id: "accordion-1",
-        name: "Accordion 1",
+        id: "accordion-00",
+        name: "Accordion 00",
         description:
           "A modern, smooth, and animated accordion component built with Framer Motion and Radix UI.",
       },
@@ -146,8 +146,8 @@ export const componentCategories = [
     ],
     items: [
       {
-        id: "list-1",
-        name: "List 1",
+        id: "list-00",
+        name: "List 00",
         description:
           "A modern list component with smooth animations built with Framer Motion.",
       },
@@ -175,8 +175,8 @@ export const componentCategories = [
     dependencies: [],
     items: [
       {
-        id: "background-1",
-        name: "Background 1",
+        id: "background-00",
+        name: "Background 00",
         description: "A modern background component with animated gradients.",
       },
     ],
@@ -207,8 +207,8 @@ export const componentCategories = [
     extraDoc: "multi-select",
     items: [
       {
-        id: "multi-select-1",
-        name: "Multi Select 1",
+        id: "multi-select-00",
+        name: "Multi Select 00",
         description:
           "A modern multi-select component with smooth animations built with Radix UI.",
       },
@@ -239,8 +239,8 @@ export const componentCategories = [
     ],
     items: [
       {
-        id: "bouncy-input",
-        name: "Bouncy Input",
+        id: "bouncy-input-00",
+        name: "Bouncy Input 00",
         description:
           "A modern bouncy input component with smooth animations built with Framer Motion.",
       },
@@ -269,8 +269,8 @@ export const componentCategories = [
     dependencies: [],
     items: [
       {
-        id: "loader-1",
-        name: "Loader 1",
+        id: "loader-00",
+        name: "Loader 00",
         description:
           "A modern loader component with smooth animations for loading states.",
       },
@@ -289,35 +289,65 @@ export const componentCategories = [
       ],
     },
   },
+  // {
+  //   id: "status-elevation",
+  //   name: "Status Elevation",
+  //   category: "layout",
+  //   path: "/components/status-elevation",
+  //   description:
+  //     "A priority queue component that smoothly re-orders items based on their status priority using layout animations.",
+  //   dependencies: [
+  //     { title: "Motion", installation: "npm i motion", link: false },
+  //     { title: "Lucide React", installation: "npm i lucide-react", link: false },
+  //   ],
+  //   items: [
+  //     {
+  //       id: "status-elevation-00",
+  //       name: "Status Elevation 00",
+  //       description:
+  //         "A priority queue component that smoothly re-orders items based on their status priority using layout animations.",
+  //     },
+  //   ],
+  //   metadata: {
+  //     title: "Status Elevation | PixelFlow UI",
+  //     description:
+  //       "An animated priority queue component that re-orders items based on status priority with smooth layout animations.",
+  //     keywords: [
+  //       "status elevation",
+  //       "priority queue",
+  //       "animated list",
+  //       "react status",
+  //       "framer motion layout",
+  //       "PixelFlow UI components",
+  //     ],
+  //   },
+  // },
   {
-    id: "status-elevation",
-    name: "Status Elevation",
+    id: "sliders",
+    name: "Sliders",
     category: "layout",
-    path: "/components/status-elevation",
+    path: "/components/sliders",
     description:
-      "A priority queue component that smoothly re-orders items based on their status priority using layout animations.",
-    dependencies: [
-      { title: "Motion", installation: "npm i motion", link: false },
-      { title: "Lucide React", installation: "npm i lucide-react", link: false },
-    ],
+      "A fully configurable slider component with tick marks, multiple sizes, and custom colors — no dependencies required.",
+    dependencies: [],
     items: [
       {
-        id: "status-elevation-1",
-        name: "Status Elevation 1",
+        id: "slider-00",
+        name: "Slider 00",
         description:
-          "A priority queue component that smoothly re-orders items based on their status priority using layout animations.",
+          "A pill-shaped slider with optional tick marks, configurable color, size, min/max/step, and drag-to-seek interaction.",
       },
     ],
     metadata: {
-      title: "Status Elevation | PixelFlow UI",
+      title: "Configurable Slider Component | PixelFlow UI",
       description:
-        "An animated priority queue component that re-orders items based on status priority with smooth layout animations.",
+        "A customizable slider component with tick marks, multiple sizes, and custom accent colors. Zero dependencies.",
       keywords: [
-        "status elevation",
-        "priority queue",
-        "animated list",
-        "react status",
-        "framer motion layout",
+        "slider",
+        "range slider",
+        "React slider",
+        "custom slider",
+        "UI components",
         "PixelFlow UI components",
       ],
     },
@@ -333,8 +363,8 @@ export const componentCategories = [
     usage: textEffectsUsage,
     items: [
       {
-        id: "proximity-text",
-        name: "Proximity Text",
+        id: "proximity-text-00",
+        name: "Proximity Text 00",
         description:
           "Cursor-reactive kinetic typography that interpolates variable font weight based on proximity.",
         usage: textEffectsUsage,

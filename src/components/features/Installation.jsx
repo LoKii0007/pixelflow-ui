@@ -12,34 +12,69 @@ import {
 } from "@/lib/installation-data";
 
 const TABS = [
-  { value: "cli", label: "CLI" },
+  // CLI install is not available yet — re-enable once the registry CLI works.
+  // { value: "cli", label: "CLI" },
   { value: "manual", label: "Manual" },
 ];
 
 // A single code block matching the design: rounded panel, line numbers and a
-// copy button anchored to the top-right.
-const CodeBlock = ({ code, language = "jsx" }) => (
-  <div className="relative rounded-lg border border-white/10 bg-zinc-900/70 overflow-hidden">
-    <div className="absolute right-2 top-2 z-10">
-      <CopyBtn code={code} />
+// copy button anchored to the top-right. When `collapsible` is set the block is
+// capped to a fixed height with an expand/collapse toggle.
+const COLLAPSED_HEIGHT = 320;
+
+const CodeBlock = ({ code, language = "jsx", collapsible = false }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="relative rounded-lg border border-white/10 bg-zinc-900/70 overflow-hidden">
+      <div className="absolute right-2 top-2 z-10">
+        <CopyBtn code={code} />
+      </div>
+      <div
+        className="custom-scrollbar overflow-auto transition-[max-height] duration-300"
+        style={
+          collapsible && !expanded
+            ? { maxHeight: COLLAPSED_HEIGHT }
+            : undefined
+        }
+      >
+        <SyntaxHighlighter
+          language={language}
+          style={atelierCaveDark}
+          showLineNumbers
+          wrapLongLines
+          customStyle={{
+            margin: 0,
+            background: "transparent",
+            padding: "1rem 0.75rem",
+            fontSize: "0.85rem",
+          }}
+          lineNumberStyle={{
+            color: "rgba(255,255,255,0.25)",
+            minWidth: "2.25em",
+          }}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
+      {collapsible && (
+        <>
+          {!expanded && (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-zinc-900 to-transparent" />
+          )}
+          <div className="relative flex justify-center border-t border-white/10 bg-zinc-900/70">
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              className="px-4 py-2 text-xs font-medium text-gray-300 transition-colors hover:text-white"
+            >
+              {expanded ? "Collapse" : "Expand to view all code"}
+            </button>
+          </div>
+        </>
+      )}
     </div>
-    <SyntaxHighlighter
-      language={language}
-      style={atelierCaveDark}
-      showLineNumbers
-      wrapLongLines
-      customStyle={{
-        margin: 0,
-        background: "transparent",
-        padding: "1rem 0.75rem",
-        fontSize: "0.85rem",
-      }}
-      lineNumberStyle={{ color: "rgba(255,255,255,0.25)", minWidth: "2.25em" }}
-    >
-      {code}
-    </SyntaxHighlighter>
-  </div>
-);
+  );
+};
 
 // One step on the vertical timeline.
 const Step = ({ step }) => (
@@ -54,7 +89,11 @@ const Step = ({ step }) => (
     )}
     {step.code && (
       <div className="mt-3">
-        <CodeBlock code={step.code} language={step.language} />
+        <CodeBlock
+          code={step.code}
+          language={step.language}
+          collapsible={step.collapsible}
+        />
       </div>
     )}
   </div>
@@ -64,7 +103,7 @@ const fileName = (path = "") => path.split("/").pop();
 
 const Installation = ({ item }) => {
   const { styleMode } = useThemeStore();
-  const [activeTab, setActiveTab] = useState("cli");
+  const [activeTab, setActiveTab] = useState("manual");
   const [registryItem, setRegistryItem] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | loading | error
 
@@ -145,6 +184,7 @@ const Installation = ({ item }) => {
         filename: file.path ? fileName(file.path) : undefined,
         code: file.content,
         language: "jsx",
+        collapsible: true,
       });
     });
 
@@ -185,7 +225,7 @@ const Installation = ({ item }) => {
           Manual installation details are unavailable for this component.
         </p>
       ) : (
-        <div className="relative border-l border-white/10 pl-1">
+        <div className="relative border-l border-white/10">
           {steps.map((step, i) => (
             <Step key={i} step={step} />
           ))}

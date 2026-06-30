@@ -13,7 +13,6 @@ const ComponentRenderer = ({ category, item }) => {
   const Wrapper = wrapperRegistry[item.id];
   const ExtraDoc = category.extraDoc ? extraDocRegistry[category.extraDoc] : null;
   const usage = item.usage || category.usage || [];
-  const dependencies = category.dependencies || [];
 
   if (!Wrapper) {
     return (
@@ -32,7 +31,7 @@ const ComponentRenderer = ({ category, item }) => {
         <Wrapper />
         <div className="col-span-1 flex flex-col gap-12">
           <Installation item={item} />
-          <DocumentationLayout dependecies={dependencies} usage={usage} />
+          <DocumentationLayout usage={usage} />
           {ExtraDoc && <ExtraDoc />}
         </div>
       </ComponentPageLayout>
