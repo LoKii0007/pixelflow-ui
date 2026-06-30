@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bouncy-input-retro",
+  "title": "Bouncy Input Retro",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/registry/inputs/retro/BouncyInputRetro.jsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect } from \"react\";\nimport { motion, useAnimation } from \"motion/react\";\n\nexport function BouncyInputRetro() {\n  const [value, setValue] = useState(\"\");\n  const [isFocused, setIsFocused] = useState(false);\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (value.length > 0) {\n        controls.start({\n            x: [0, 2, -2, 0],\n            transition: { duration: 0.1 }\n        });\n    }\n  }, [value, controls]);\n\n  return (\n    <div className=\"relative w-full max-w-md bg-white\">\n        <div className={`absolute top-0 left-0 w-full h-full border-2 border-black shadow-[4px_4px_0px_0px_#000000] bg-white transition-all duration-200 ${isFocused ? 'translate-x-[2px] translate-y-[2px] shadow-none' : ''}`}></div>\n        \n        <div className=\"relative z-10 flex items-center px-4 py-3 font-mono text-black\">\n            <span className=\"mr-2 font-bold text-lg select-none\">{\">\"}</span>\n            <input\n                type=\"text\"\n                value={value}\n                onChange={(e) => setValue(e.target.value)}\n                onFocus={() => setIsFocused(true)}\n                onBlur={() => setIsFocused(false)}\n                className=\"w-full bg-transparent border-none outline-none text-lg font-bold placeholder-gray-500 uppercase tracking-wider\"\n                placeholder=\"ENTER_COMMAND...\"\n                autoComplete=\"off\"\n                spellCheck=\"false\"\n            />\n            <motion.div\n                animate={controls} \n                className={`w-3 h-6 bg-black ml-1 ${isFocused ? 'animate-pulse' : 'opacity-0'}`}\n            ></motion.div>\n        </div>\n        \n        <div className=\"absolute -top-3 left-4 bg-white text-black px-2 border-2 border-black text-xs font-bold uppercase tracking-widest z-20\">\n            INPUT_TERMINAL\n        </div>\n    </div>\n    \n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

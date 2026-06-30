@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "proximity-text",
+  "title": "Proximity Text",
+  "files": [
+    {
+      "path": "src/registry/text-effects/nova/ProximityText.jsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef } from \"react\";\n\nconst ProximityText = ({ text }) => {\n  const wordRef = useRef([]);\n  const isHoverRef = useRef(false);\n  const rectsRef = useRef([]);\n\n  const cacheRects = () => {\n    rectsRef.current = wordRef.current.map((el) => el.getBoundingClientRect());\n  };\n\n  const resetWeights = () => {\n    wordRef.current.forEach((el) => (el.style.fontWeight = \"400\"));\n  };\n\n  useEffect(() => {\n    const handleMouse = (e) => {\n      if (!isHoverRef.current) return;\n      const mouseX = e.clientX;\n      const maxDistance = 30;\n\n      rectsRef.current.forEach((rect, i) => {\n        const centerX = rect.left + rect.width / 2;\n        const distance = Math.abs(mouseX - centerX);\n        const weight = Math.max(\n          400,\n          Math.round(900 - (distance / maxDistance) * 500)\n        );\n        wordRef.current[i].style.fontWeight = String(weight);\n      });\n    };\n\n    window.addEventListener(\"mousemove\", handleMouse);\n    return () => window.removeEventListener(\"mousemove\", handleMouse);\n  }, []);\n\n  return (\n    <span\n      onMouseEnter={() => {\n        isHoverRef.current = true;\n        cacheRects();\n      }}\n      onMouseLeave={() => {\n        isHoverRef.current = false;\n        resetWeights();\n      }}\n      className=\"cursor-pointer inline-flex\"\n    >\n      {text.split(\"\").map((letter, i) => (\n        <span\n          ref={(el) => {\n            if (el) wordRef.current[i] = el;\n          }}\n          key={i}\n          className=\"transition-all duration-150 font-[family-name:var(--font-inter)]\"\n        >\n          {letter === \" \" ? \"\\u00A0\" : letter}\n        </span>\n      ))}\n    </span>\n  );\n};\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center justify-center text-4xl text-white\">\n      <ProximityText text=\"Hover over me\" />\n    </div>\n  );\n}\n\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

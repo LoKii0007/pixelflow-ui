@@ -4,6 +4,7 @@ import React from "react";
 import ComponentHeading from "@/components/common/ComponentHeading";
 import ComponentPageLayout from "@/layouts/ComponentPageLayout";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
+import Installation from "@/components/features/Installation";
 import { wrapperRegistry, extraDocRegistry } from "@/components/features/registry";
 
 // Renders a single component (one item per page). `category` and `item`
@@ -29,7 +30,8 @@ const ComponentRenderer = ({ category, item }) => {
 
       <ComponentPageLayout className={"grid-cols-1"}>
         <Wrapper />
-        <div className="col-span-1">
+        <div className="col-span-1 flex flex-col gap-12">
+          <Installation item={item} />
           <DocumentationLayout dependecies={dependencies} usage={usage} />
           {ExtraDoc && <ExtraDoc />}
         </div>
